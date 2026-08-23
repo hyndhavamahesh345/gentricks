@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { editorialImages } from '../../config/editorialImages';
 
 interface CoreThesisSectionProps {
   onOpenModal?: (type: string) => void;
@@ -13,13 +14,13 @@ export const CoreThesisSection: React.FC<CoreThesisSectionProps> = ({ onOpenModa
       aria-label="The Idea"
     >
       <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        {/* Left Column: Framed Editorial Image */}
+        {/* Left Column: Framed Editorial Image (4:3 Crop) */}
         <div className="lg:col-span-5 order-2 lg:order-1 rv-scale">
-          <div className="relative rounded-xl overflow-hidden border border-white/[0.1] bg-zinc-950 shadow-2xl">
+          <div className="relative rounded-xl overflow-hidden border border-white/[0.1] bg-zinc-950 shadow-2xl group">
             <img
-              src="/assets/venture_collab.jpg"
-              alt="Collaboration and Ideation"
-              className="w-full h-full object-cover aspect-[4/3] grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+              src={editorialImages.idea}
+              alt="Hands prototyping and sketching ideas"
+              className="w-full h-full object-cover aspect-[4/3] grayscale-[15%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
             

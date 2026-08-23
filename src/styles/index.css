@@ -101,7 +101,8 @@ main > section.stack-sheet:first-of-type {
 .sheet-6 { z-index: 60; }
 .sheet-7 { z-index: 70; }
 .sheet-8 { z-index: 80; }
-.sheet-footer { z-index: 90; }
+.sheet-9 { z-index: 90; }
+.sheet-footer { z-index: 100; }
 
 /* ========================================================= */
 /* QUIET & RESTRAINED SCROLL REVEALS (.rv)                    */

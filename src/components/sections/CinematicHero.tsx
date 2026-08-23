@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { editorialImages } from '../../config/editorialImages';
 
 interface CinematicHeroProps {
   onOpenModal: (type: string) => void;
@@ -53,13 +54,13 @@ export const CinematicHero: React.FC<CinematicHeroProps> = ({ onOpenModal }) => 
           </div>
         </div>
 
-        {/* Right Column: Editorial Framed Photograph */}
-        <div className="lg:col-span-5 rv-scale rv-delay-2">
-          <div className="relative rounded-xl overflow-hidden border border-white/[0.1] bg-zinc-950 shadow-2xl">
+        {/* Right Column: Editorial Framed Photograph (4:5 Crop) */}
+        <div className="lg:col-span-5 rv-scale">
+          <div className="relative rounded-xl overflow-hidden border border-white/[0.1] bg-zinc-950 shadow-2xl group">
             <img
-              src="/assets/builder_team.jpg"
-              alt="Gentricks Builders"
-              className="w-full h-full object-cover aspect-[4/3] grayscale-[20%] hover:grayscale-0 transition-all duration-700"
+              src={editorialImages.hero}
+              alt="Gentricks Builders in workshop"
+              className="w-full h-full object-cover aspect-[4/5] grayscale-[15%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
             

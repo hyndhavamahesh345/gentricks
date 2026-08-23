@@ -1,4 +1,5 @@
 import React from 'react';
+import { editorialImages } from '../../config/editorialImages';
 
 interface Stage {
   step: string;
@@ -22,7 +23,7 @@ export const JourneySection: React.FC = () => {
       id="journey"
       aria-label="The Journey"
     >
-      <div className="max-w-6xl mx-auto w-full relative z-10">
+      <div className="max-w-7xl mx-auto w-full relative z-10">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-16 pb-6 border-b border-white/[0.08] gap-4">
           <div>
@@ -39,24 +40,44 @@ export const JourneySection: React.FC = () => {
           </p>
         </div>
 
-        {/* 6-Step Clean Progression Grid (No bulky cards, just thin editorial structure) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-12">
-          {stages.map((stage, idx) => (
-            <div
-              key={stage.step}
-              className={`rv rv-delay-${Math.min(idx + 1, 5)} flex flex-col items-start text-left border-l border-white/[0.08] pl-5 sm:pl-6`}
-            >
-              <span className="font-mono text-xs text-zinc-500 font-medium mb-2">
-                {stage.step}
-              </span>
-              <h3 className="font-display font-medium text-xl sm:text-2xl text-zinc-200 mb-2">
-                {stage.name}
-              </h3>
-              <p className="font-body text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
-                {stage.desc}
-              </p>
+        {/* Asymmetric Split: 6-Stage Linear Progression on Left (7 cols) + 1:1 Square Workbench Visual on Right (5 cols) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left: 6-Step Linear Flow */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-8">
+            {stages.map((stage, idx) => (
+              <div
+                key={stage.step}
+                className={`rv rv-delay-${Math.min(idx + 1, 5)} flex flex-col items-start text-left border-l border-white/[0.08] pl-4 sm:pl-5`}
+              >
+                <span className="font-mono text-xs text-zinc-500 font-medium mb-1.5">
+                  {stage.step}
+                </span>
+                <h3 className="font-display font-medium text-lg sm:text-xl text-zinc-200 mb-1.5">
+                  {stage.name}
+                </h3>
+                <p className="font-body text-xs text-zinc-400 leading-relaxed font-normal">
+                  {stage.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Right: 1:1 Square Editorial Visual (Workbench: Idea → Execution) */}
+          <div className="lg:col-span-5 rv-scale">
+            <div className="relative rounded-xl overflow-hidden border border-white/[0.1] bg-zinc-950 shadow-2xl aspect-square group">
+              <img
+                src={editorialImages.journey}
+                alt="Engineering workbench with sketches, electronics, and laptop"
+                className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+              
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-zinc-400 font-mono text-[10px] uppercase tracking-wider">
+                <span>04 / Experimentation</span>
+                <span className="text-zinc-500">Idea to Prototype</span>
+              </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

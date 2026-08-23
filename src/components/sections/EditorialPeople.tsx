@@ -1,4 +1,5 @@
 import React from 'react';
+import { editorialImages } from '../../config/editorialImages';
 
 interface Cohort {
   name: string;
@@ -22,8 +23,25 @@ export const EditorialPeople: React.FC = () => {
       aria-label="People & Community"
     >
       <div className="max-w-7xl mx-auto w-full relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        {/* Left Column: People & Cohorts */}
-        <div className="lg:col-span-7 flex flex-col items-start text-left">
+        {/* Left Column: Framed Editorial Photo (4:5 Crop, Authentic Collaboration) */}
+        <div className="lg:col-span-5 order-2 lg:order-1 rv-scale">
+          <div className="relative rounded-xl overflow-hidden border border-white/[0.1] bg-zinc-950 shadow-2xl group">
+            <img
+              src={editorialImages.people}
+              alt="Young builders and creators collaborating"
+              className="w-full h-full object-cover aspect-[4/5] grayscale-[15%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+            
+            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-zinc-400 font-mono text-[10px] uppercase tracking-wider">
+              <span>05 / The Collective</span>
+              <span className="text-zinc-500">Autonomous Squads</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: People & Cohorts */}
+        <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col items-start text-left">
           <div className="rv inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-400 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-gentricks-yellow" />
             05 // The Community
@@ -49,23 +67,6 @@ export const EditorialPeople: React.FC = () => {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Right Column: Framed Editorial Photo */}
-        <div className="lg:col-span-5 rv-scale rv-delay-2">
-          <div className="relative rounded-xl overflow-hidden border border-white/[0.1] bg-zinc-950 shadow-2xl">
-            <img
-              src="/assets/creator_studio.jpg"
-              alt="Creators and Designers"
-              className="w-full h-full object-cover aspect-[4/3] grayscale-[20%] hover:grayscale-0 transition-all duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-            
-            <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-zinc-400 font-mono text-[10px] uppercase tracking-wider">
-              <span>05 / Creative Studio</span>
-              <span className="text-zinc-500">Design & Media</span>
-            </div>
           </div>
         </div>
       </div>

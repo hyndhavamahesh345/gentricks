@@ -9,6 +9,7 @@ import { JourneySection } from './components/sections/JourneySection';
 import { EditorialPeople } from './components/sections/EditorialPeople';
 import { VisualStoryScene } from './components/sections/VisualStoryScene';
 import { WhatGentricksIsBuilding } from './components/sections/WhatGentricksIsBuilding';
+import { JoinSection } from './components/sections/JoinSection';
 import { FinalHorizon } from './components/sections/FinalHorizon';
 import { Footer } from './components/sections/Footer';
 import { ModalRoot } from './components/modals/ModalRoot';
@@ -41,35 +42,38 @@ export const App: React.FC = () => {
 
       {/* Main Flow of Stacking Editorial Scenes */}
       <main className="relative w-full">
-        {/* Scene 01: Hero & Introduction (z-10) */}
+        {/* Scene 01: Hero & Introduction (z-10, TEXT + IMAGE) */}
         <CinematicHero
           onOpenModal={handleOpenModal}
           onIntroComplete={() => setNavVisible(true)}
         />
 
-        {/* Scene 02: The Idea & Manifesto (z-20) */}
+        {/* Scene 02: The Idea & Manifesto (z-20, IMAGE + TEXT) */}
         <CoreThesisSection onOpenModal={handleOpenModal} />
 
-        {/* Scene 03: The Ecosystem Directory (z-30) */}
+        {/* Scene 03: The Ecosystem Directory (z-30, TEXT + INTERACTIVE IMAGE) */}
         <EcosystemCinematic onOpenModal={handleOpenModal} />
 
-        {/* Scene 04: The Builder Pathway (z-40) */}
+        {/* Scene 04: The Builder Pathway (z-40, TEXT + IMAGE) */}
         <JourneySection />
 
-        {/* Scene 05: People & Community Cohorts (z-50) */}
+        {/* Scene 05: People & Community (z-50, IMAGE + TEXT) */}
         <EditorialPeople />
 
-        {/* Scene 06: Build & Technical Lab (z-60) */}
+        {/* Scene 06: Build & Technical Lab (z-60, IMAGE + TEXT) */}
         <VisualStoryScene onOpenModal={handleOpenModal} />
 
-        {/* Scene 07: Opportunities Catalog (z-70) */}
+        {/* Scene 07: Opportunities Directory (z-70, LIST + TALL IMAGE) */}
         <WhatGentricksIsBuilding onOpenModal={handleOpenModal} />
 
-        {/* Scene 08: Final Horizon & Brand Resolution (z-80) */}
+        {/* Scene 08: Join The Ecosystem (z-80, CTA + WIDE IMAGE) */}
+        <JoinSection onOpenModal={handleOpenModal} />
+
+        {/* Scene 09: Final Statement & Resolution (z-90, BLACK / MINIMAL) */}
         <FinalHorizon onOpenModal={handleOpenModal} />
       </main>
 
-      {/* Minimal Footer (z-90) */}
+      {/* Minimal Footer (z-100) */}
       <Footer onOpenModal={handleOpenModal} />
 
       {/* Unified Interactive Modals */}

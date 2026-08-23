@@ -1,6 +1,6 @@
 import React from 'react';
-import { ArrowUpRight } from 'lucide-react';
-import { socialLinks } from '../../config/socialLinks';
+import { ArrowUpRight, Mail } from 'lucide-react';
+import { socialLinks, contactEmails } from '../../config/socialLinks';
 import { SocialIcon } from '../SocialIcons';
 
 interface FooterProps {
@@ -20,6 +20,24 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
             <p className="font-body text-xs sm:text-sm text-zinc-400 max-w-sm leading-relaxed">
               Building the ecosystem for the next generation.
             </p>
+
+            {/* Direct Official Contact Emails */}
+            <div className="flex flex-col gap-1.5 pt-1 text-xs text-zinc-400 font-mono">
+              <a
+                href={`mailto:${contactEmails.collab}`}
+                className="hover:text-gentricks-yellow transition-colors inline-flex items-center gap-1.5"
+              >
+                <Mail className="w-3.5 h-3.5 text-zinc-500" />
+                <span>Collab: <strong className="font-medium text-zinc-300">{contactEmails.collab}</strong></span>
+              </a>
+              <a
+                href={`mailto:${contactEmails.support}`}
+                className="hover:text-gentricks-yellow transition-colors inline-flex items-center gap-1.5"
+              >
+                <Mail className="w-3.5 h-3.5 text-zinc-500" />
+                <span>Support: <strong className="font-medium text-zinc-300">{contactEmails.support}</strong></span>
+              </a>
+            </div>
 
             {/* Centralized Social Links */}
             <div className="flex items-center gap-2 pt-2">

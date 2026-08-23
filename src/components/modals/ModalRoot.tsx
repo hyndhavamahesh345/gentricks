@@ -190,7 +190,7 @@ export const ModalRoot: React.FC<ModalRootProps> = ({ activeModal, onClose }) =>
               PARTNER WITH GENTRICKS
             </h3>
             <p className="font-body text-sm text-zinc-400 mb-6">
-              Connect with our partnership team to explore talent pipelines, campus chapters, and innovation initiatives.
+              Connect with our partnership team or email directly at <a href="mailto:collab@gentricks.in" className="text-gentricks-yellow hover:underline font-mono text-xs">collab@gentricks.in</a> to explore talent pipelines, campus chapters, and innovation initiatives.
             </p>
 
             <form

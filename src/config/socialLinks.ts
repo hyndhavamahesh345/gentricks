@@ -10,22 +10,22 @@ export const socialLinks: SocialLink[] = [
   {
     id: 'instagram',
     name: 'Instagram',
-    url: 'https://instagram.com/gentricks',
-    handle: '@gentricks',
+    url: 'https://www.instagram.com/gentricks__?utm_source=qr',
+    handle: '@gentricks__',
     iconName: 'Instagram',
   },
   {
     id: 'youtube',
     name: 'YouTube',
-    url: 'https://youtube.com/@gentricks',
-    handle: '@gentricks',
+    url: 'https://www.youtube.com/@GenTricks-01',
+    handle: '@GenTricks-01',
     iconName: 'Youtube',
   },
   {
     id: 'linkedin',
     name: 'LinkedIn',
-    url: 'https://linkedin.com/company/gentricks',
-    handle: 'company/gentricks',
+    url: 'https://www.linkedin.com/in/gentricks-7b7a77426/',
+    handle: 'gentricks-7b7a77426',
     iconName: 'Linkedin',
   },
   {
@@ -43,3 +43,8 @@ export const socialLinks: SocialLink[] = [
     iconName: 'Twitter',
   },
 ];
+
+export const contactEmails = {
+  support: 'support@gentricks.in',
+  collab: 'collab@gentricks.in',
+};

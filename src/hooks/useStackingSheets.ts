@@ -16,11 +16,11 @@ export function useStackingSheets() {
     updateSheetOffsets();
     window.addEventListener('resize', updateSheetOffsets, { passive: true });
 
-    // 2. IntersectionObserver for Scroll Reveals (.rv -> .in-view)
+    // 2. IntersectionObserver for Scroll Reveals (.rv, .rv-scale -> .in-view)
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     if (prefersReducedMotion) {
-      document.querySelectorAll('.rv').forEach((el) => {
+      document.querySelectorAll('.rv, .rv-scale').forEach((el) => {
         el.classList.add('in-view');
       });
       return () => {
@@ -38,13 +38,20 @@ export function useStackingSheets() {
       },
       {
         root: null,
-        rootMargin: '0px 0px -10% 0px',
-        threshold: 0.15,
+        rootMargin: '50px 0px -5% 0px',
+        threshold: 0.02,
       }
     );
 
-    const revealElements = document.querySelectorAll('.rv');
-    revealElements.forEach((el) => observer.observe(el));
+    const revealElements = document.querySelectorAll('.rv, .rv-scale');
+    revealElements.forEach((el) => {
+      // Check if element is already in viewport on load
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        el.classList.add('in-view');
+      }
+      observer.observe(el);
+    });
 
     return () => {
       window.removeEventListener('resize', updateSheetOffsets);

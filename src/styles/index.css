@@ -108,27 +108,17 @@ main > section.stack-sheet:first-of-type {
 /* QUIET & RESTRAINED SCROLL REVEALS (.rv)                    */
 /* ========================================================= */
 .rv {
-  opacity: 0;
-  transform: translateY(18px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
-.rv.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .rv-scale {
-  opacity: 0;
-  transform: scale(0.97) translateY(16px);
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-.rv-scale.in-view {
   opacity: 1;
   transform: scale(1) translateY(0);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 .rv-delay-1 { transition-delay: 80ms; }
@@ -149,13 +139,4 @@ main > section.stack-sheet:first-of-type {
   z-index: 999;
   opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Reduced Motion Override */
-@media (prefers-reduced-motion: reduce) {
-  .rv, .rv-scale {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
 }

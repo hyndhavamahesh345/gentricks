@@ -1,19 +1,19 @@
 export const editorialImages = {
-  hero: '/assets/hero_builders.jpg',
-  idea: '/assets/idea_prototype.jpg',
-  journey: '/assets/journey_workbench.jpg',
+  hero: '/assets/community_hero.jpg',
+  idea: '/assets/community_ideation.jpg',
+  journey: '/assets/software_journey.jpg',
   people: '/assets/people_collaborating.jpg',
-  build: '/assets/hardware_lab.jpg',
-  opportunities: '/assets/opportunities_hub.jpg',
+  build: '/assets/venture_collab.jpg',
+  opportunities: '/assets/creator_studio.jpg',
   join: '/assets/join_studio.jpg',
 
   ecosystem: {
-    community: '/assets/builder_team.jpg',
-    technology: '/assets/hardware_lab.jpg',
-    build: '/assets/idea_prototype.jpg',
+    community: '/assets/community_hero.jpg',
+    technology: '/assets/people_collaborating.jpg',
+    build: '/assets/software_journey.jpg',
     creators: '/assets/creator_studio.jpg',
     startups: '/assets/venture_collab.jpg',
-    opportunities: '/assets/opportunities_hub.jpg',
-    partnerships: '/assets/people_collaborating.jpg'
+    opportunities: '/assets/community_ideation.jpg',
+    partnerships: '/assets/join_studio.jpg'
   }
 };

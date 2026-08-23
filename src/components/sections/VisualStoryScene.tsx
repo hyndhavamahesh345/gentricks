@@ -25,8 +25,8 @@ export const VisualStoryScene: React.FC<VisualStorySceneProps> = ({ onOpenModal 
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
             
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-zinc-400 font-mono text-[10px] uppercase tracking-wider">
-              <span>06 / Technical Lab</span>
-              <span className="text-zinc-500">Hardware & Code</span>
+              <span>06 / Engineering</span>
+              <span className="text-zinc-500">Software & Systems</span>
             </div>
           </div>
         </div>

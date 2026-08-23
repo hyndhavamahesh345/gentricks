@@ -38,8 +38,8 @@ export const socialLinks: SocialLink[] = [
   {
     id: 'x',
     name: 'X (Twitter)',
-    url: 'https://x.com/gentricks',
-    handle: '@gentricks',
+    url: 'https://x.com/GenTricks__',
+    handle: '@GenTricks__',
     iconName: 'Twitter',
   },
 ];

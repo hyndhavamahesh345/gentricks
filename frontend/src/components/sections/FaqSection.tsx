@@ -32,6 +32,11 @@ const faqs: FaqItem[] = [
     answer:
       'Gentricks is an India-focused technology and innovation ecosystem connecting emerging builders and creators across university campuses, tech hubs, and digital communities.',
   },
+  {
+    question: 'Is Gentricks a gaming channel or content creator?',
+    answer:
+      'No. Gentricks (gentricks.in) is the official youth-driven technology, innovation, creator, community, and startup ecosystem designed to connect builders, developers, founders, and future leaders.',
+  },
 ];
 
 export const FaqSection: React.FC = () => {

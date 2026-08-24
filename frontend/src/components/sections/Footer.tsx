@@ -13,7 +13,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
           {/* Brand Col */}
-          <div className="md:col-span-5 flex flex-col items-start gap-4">
+          <div className="md:col-span-7 flex flex-col items-start gap-4">
             <a href="#hero" aria-label="Gentricks Homepage">
               <img
                 src="/assets/logo.svg"
@@ -64,21 +64,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
             </div>
           </div>
 
-          {/* Quick Navigation Links */}
-          <div className="md:col-span-3">
-            <h4 className="font-mono text-xs font-medium uppercase tracking-widest text-zinc-400 mb-4">
-              Navigation
-            </h4>
-            <ul className="space-y-2 font-body text-xs sm:text-sm text-zinc-400">
-              <li><a href="#ecosystem" className="hover:text-white transition-colors">Ecosystem</a></li>
-              <li><a href="#journey" className="hover:text-white transition-colors">Build Pathway</a></li>
-              <li><a href="#people" className="hover:text-white transition-colors">Community</a></li>
-              <li><a href="#opportunities" className="hover:text-white transition-colors">Opportunities</a></li>
-            </ul>
-          </div>
-
           {/* Direct Actions */}
-          <div className="md:col-span-4">
+          <div className="md:col-span-5">
             <h4 className="font-mono text-xs font-medium uppercase tracking-widest text-zinc-400 mb-4">
               Engagement
             </h4>

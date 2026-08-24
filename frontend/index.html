@@ -23,10 +23,12 @@
 
   <link rel="canonical" href="https://gentricks.in/" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
+  <!-- Favicon & Touch Icons (Googlebot Favicon Standards) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+  <link rel="shortcut icon" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
   <!-- Open Graph / Social SEO -->
   <meta property="og:type" content="website" />
@@ -80,7 +82,12 @@
         "@id": "https://gentricks.in/#organization",
         "name": "Gentricks",
         "url": "https://gentricks.in/",
-        "logo": "https://gentricks.in/favicon.png",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://gentricks.in/icon-512.png",
+          "width": 512,
+          "height": 512
+        },
         "description": "Gentricks is a youth-driven technology, innovation, creator, community, and startup ecosystem connecting builders, creators, entrepreneurs, and future leaders.",
         "sameAs": [
           "https://x.com/gentricks_in",

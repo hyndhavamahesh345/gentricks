@@ -10,6 +10,7 @@ import { JourneySection } from './components/sections/JourneySection';
 import { EditorialPeople } from './components/sections/EditorialPeople';
 import { VisualStoryScene } from './components/sections/VisualStoryScene';
 import { WhatGentricksIsBuilding } from './components/sections/WhatGentricksIsBuilding';
+import { FaqSection } from './components/sections/FaqSection';
 import { Footer } from './components/sections/Footer';
 import { ModalRoot } from './components/modals/ModalRoot';
 
@@ -65,6 +66,9 @@ export const App: React.FC = () => {
 
         {/* Scene 07: Opportunities Directory (z-70, LIST + TALL IMAGE) */}
         <WhatGentricksIsBuilding onOpenModal={handleOpenModal} />
+
+        {/* Scene 08: Frequently Asked Questions & GEO (z-80, ACCORDION + AI OVERVIEW) */}
+        <FaqSection />
       </main>
 
       {/* Minimal Footer (z-100) */}

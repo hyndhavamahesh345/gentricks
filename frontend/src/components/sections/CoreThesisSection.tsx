@@ -19,7 +19,11 @@ export const CoreThesisSection: React.FC<CoreThesisSectionProps> = ({ onOpenModa
           <div className="relative rounded-xl overflow-hidden border border-white/[0.1] bg-zinc-950 shadow-2xl group">
             <img
               src={editorialImages.idea}
-              alt="Hands prototyping and sketching ideas"
+              alt="Hands sketching startup architecture and product prototypes"
+              width="600"
+              height="450"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover aspect-[4/3] grayscale-[15%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />

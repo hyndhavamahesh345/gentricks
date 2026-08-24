@@ -14,8 +14,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 mb-12">
           {/* Brand Col */}
           <div className="md:col-span-5 flex flex-col items-start gap-4">
-            <a href="#hero" aria-label="Gentricks">
-              <img src="/assets/logo.svg" alt="Gentricks" className="h-8 sm:h-10 w-auto object-contain" />
+            <a href="#hero" aria-label="Gentricks Homepage">
+              <img
+                src="/assets/logo.svg"
+                alt="Gentricks Logo"
+                width="160"
+                height="40"
+                loading="lazy"
+                decoding="async"
+                className="h-8 sm:h-10 w-auto object-contain"
+              />
             </a>
             <p className="font-body text-xs sm:text-sm text-zinc-400 max-w-sm leading-relaxed">
               Building the ecosystem for the next generation.

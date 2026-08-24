@@ -94,7 +94,11 @@ export const WhatGentricksIsBuilding: React.FC<WhatGentricksIsBuildingProps> = (
             <div className="relative rounded-xl overflow-hidden border border-white/[0.1] bg-zinc-950 shadow-2xl aspect-[4/3] max-h-[420px] w-full group">
               <img
                 src={editorialImages.opportunities}
-                alt="Young builders in innovation build sprint"
+                alt="Young builders participating in an innovation build sprint"
+                width="600"
+                height="450"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-[30%_20%] grayscale-[15%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent pointer-events-none" />

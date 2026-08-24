@@ -41,10 +41,14 @@ export const Navigation: React.FC<NavigationProps> = ({ onOpenModal, visible = t
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-8 h-full flex items-center justify-between">
           {/* Brand Logo */}
-          <a href="#hero" className="flex items-center gap-3 shrink-0 py-1" aria-label="Gentricks">
+          <a href="#hero" className="flex items-center gap-3 shrink-0 py-1" aria-label="Gentricks Homepage">
             <img
               src="/assets/logo.svg"
-              alt="Gentricks"
+              alt="Gentricks Logo"
+              width="160"
+              height="40"
+              loading="eager"
+              decoding="async"
               className="h-8 sm:h-9 md:h-10 w-auto object-contain transition-opacity hover:opacity-85"
             />
           </a>

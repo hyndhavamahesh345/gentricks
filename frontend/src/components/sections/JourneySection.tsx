@@ -68,6 +68,10 @@ export const JourneySection: React.FC = () => {
               <img
                 src={editorialImages.journey}
                 alt="Engineering workbench with sketches, electronics, and laptop"
+                width="500"
+                height="500"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700 ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />

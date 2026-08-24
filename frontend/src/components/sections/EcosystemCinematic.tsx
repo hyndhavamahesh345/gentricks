@@ -100,7 +100,11 @@ export const EcosystemCinematic: React.FC<EcosystemCinematicProps> = ({ onOpenMo
                 <img
                   key={row.key}
                   src={editorialImages.ecosystem[row.key]}
-                  alt={row.name}
+                  alt={`Gentricks ${row.name} pillar`}
+                  width="600"
+                  height="450"
+                  loading="lazy"
+                  decoding="async"
                   className={`absolute inset-0 w-full h-full object-cover grayscale-[15%] transition-all duration-500 ease-out ${
                     activeKey === row.key
                       ? 'opacity-100 scale-100'

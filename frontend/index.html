@@ -80,94 +80,90 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- JSON-LD Structured Data for Search Engines & AI Generators -->
+  <!-- 1. Organization Schema (Google Rich Results & Knowledge Graph) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
+    "@type": "Organization",
+    "@id": "https://gentricks.in/#organization",
+    "name": "Gentricks",
+    "url": "https://gentricks.in/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://gentricks.in/logo.png",
+      "width": 512,
+      "height": 512
+    },
+    "description": "Gentricks is a youth-driven technology, innovation, creator community, and startup ecosystem connecting builders and entrepreneurs.",
+    "sameAs": [
+      "https://linkedin.com/company/gentricks",
+      "https://x.com/gentricks_in",
+      "https://instagram.com/gentricks.in",
+      "https://github.com/hyndhavamahesh345/gentricks"
+    ]
+  }
+  </script>
+
+  <!-- 2. WebSite Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://gentricks.in/#website",
+    "url": "https://gentricks.in/",
+    "name": "Gentricks",
+    "publisher": {
+      "@id": "https://gentricks.in/#organization"
+    }
+  }
+  </script>
+
+  <!-- 3. FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "@id": "https://gentricks.in/#faq",
+    "mainEntity": [
       {
-        "@type": "Organization",
-        "@id": "https://gentricks.in/#organization",
-        "name": "Gentricks",
-        "legalName": "Gentricks Ecosystem",
-        "alternateName": ["Gentricks", "Gentricks Ecosystem", "Gentricks Community", "Gentricks India"],
-        "url": "https://gentricks.in/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://gentricks.in/logo.png",
-          "width": 512,
-          "height": 512
-        },
-        "description": "Gentricks is a youth-driven technology, innovation, creator, community, and startup ecosystem connecting builders, creators, entrepreneurs, and future leaders.",
-        "disambiguatingDescription": "Gentricks (gentricks.in) is the official youth technology, innovation, creator, community, and startup ecosystem connecting student builders, developers, creators, and entrepreneurs.",
-        "knowsAbout": [
-          "Youth Technology Ecosystem",
-          "Developer & Creator Communities",
-          "Startup Incubation & Hackathons",
-          "Student Innovation & Leadership Tracks"
-        ],
-        "sameAs": [
-          "https://x.com/gentricks_in",
-          "https://instagram.com/gentricks.in",
-          "https://linkedin.com/company/gentricks",
-          "https://github.com/hyndhavamahesh345/gentricks"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://gentricks.in/#website",
-        "url": "https://gentricks.in/",
-        "name": "Gentricks",
-        "description": "Gentricks — Where Builders Connect, Create & Lead",
-        "publisher": {
-          "@id": "https://gentricks.in/#organization"
+        "@type": "Question",
+        "name": "What is Gentricks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gentricks is a youth-driven technology, innovation, creator, community, and startup ecosystem connecting builders, creators, entrepreneurs, and future leaders."
         }
       },
       {
-        "@type": "FAQPage",
-        "@id": "https://gentricks.in/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is Gentricks?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Gentricks is a youth-driven technology, innovation, creator, community, and startup ecosystem connecting builders, creators, entrepreneurs, and future leaders."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Who can join Gentricks?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Students, developers, creators, entrepreneurs, innovators, and technology enthusiasts can join the Gentricks ecosystem."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What opportunities does Gentricks provide?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Gentricks connects its community with projects, hackathons, events, builder activities, incubation tracks, mentorship, and career pathways."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the goal of Gentricks?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The goal of Gentricks is to help the next generation of builders, creators, and entrepreneurs connect, create, collaborate, and lead."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Where does Gentricks operate?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Gentricks is an India-focused technology and innovation ecosystem connecting emerging builders and creators across university campuses, tech hubs, and online communities."
-            }
-          }
-        ]
+        "@type": "Question",
+        "name": "Who can join Gentricks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Students, developers, creators, entrepreneurs, innovators, and technology enthusiasts can join the Gentricks ecosystem."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What opportunities does Gentricks provide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gentricks connects its community with projects, hackathons, events, builder activities, incubation tracks, mentorship, and career pathways."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the goal of Gentricks?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The goal of Gentricks is to help the next generation of builders, creators, and entrepreneurs connect, create, collaborate, and lead."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where does Gentricks operate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gentricks is an India-focused technology and innovation ecosystem connecting emerging builders and creators across university campuses, tech hubs, and online communities."
+        }
       }
     ]
   }

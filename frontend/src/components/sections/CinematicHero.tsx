@@ -32,7 +32,7 @@ export const CinematicHero: React.FC<CinematicHeroProps> = ({ onOpenModal }) => 
 
           {/* Supporting Copy */}
           <p className="rv rv-delay-2 font-body text-base sm:text-lg text-zinc-400 max-w-xl leading-relaxed mb-8 font-normal">
-            Gentricks is a youth-driven technology, innovation, creator, community, and startup ecosystem bringing the next generation of builders, creators, entrepreneurs, and future leaders together.
+            <strong className="text-white font-medium">Gentricks</strong> is a premier youth-driven technology, innovation, creator, community, and startup ecosystem in India that empowers builders, creators, and entrepreneurs to connect, create, and lead.
           </p>
 
           {/* Buttons */}

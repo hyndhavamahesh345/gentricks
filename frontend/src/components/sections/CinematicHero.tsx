@@ -27,12 +27,12 @@ export const CinematicHero: React.FC<CinematicHeroProps> = ({ onOpenModal }) => 
 
           {/* Sophisticated Editorial Headline */}
           <h1 className="rv rv-delay-1 font-display font-medium text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[1.12] text-white mb-6 max-w-2xl">
-            Where the next generation connects, creates, and leads.
+            GenTricks — Where Young Builders Launch Their Startup Ideas.
           </h1>
 
           {/* Supporting Copy */}
           <p className="rv rv-delay-2 font-body text-base sm:text-lg text-zinc-400 max-w-xl leading-relaxed mb-8 font-normal">
-            <strong className="text-white font-medium">Gentricks</strong> is a premier youth-driven technology, innovation, creator, community, and startup ecosystem in India that empowers builders, creators, and entrepreneurs to connect, create, and lead.
+            <strong className="text-white font-medium">GenTricks</strong> is a premier youth-driven startup ecosystem in India where engineers, designers, creators, and founders connect, build, launch, and lead. Discover internships, hackathons, incubation programs, and creator residencies.
           </p>
 
           {/* Buttons */}

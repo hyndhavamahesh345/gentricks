@@ -2,6 +2,19 @@
   "buildCommand": "npm run build --prefix frontend",
   "outputDirectory": "frontend/dist",
   "framework": "vite",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "gentricks.in"
+        }
+      ],
+      "destination": "https://www.gentricks.in/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/((?!assets/|logo|favicon|apple-touch-icon|robots\\.txt|sitemap\\.xml).*+)",

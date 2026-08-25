@@ -51,10 +51,9 @@ function saveLocalStorageBackup(key: string, data: any) {
 
 // 1. Submit Registration (Waitlist & Membership)
 export async function submitRegistration(data: RegistrationData): Promise<ApiResponse> {
-  // Option A: Direct Supabase Insertion if configured
   if (isSupabaseConfigured()) {
     try {
-      const { data: record, error } = await supabase
+      const { error } = await supabase
         .from('registrations')
         .insert([
           {
@@ -62,19 +61,16 @@ export async function submitRegistration(data: RegistrationData): Promise<ApiRes
             email: data.email.trim().toLowerCase(),
             domain: data.domain.trim(),
           },
-        ])
-        .select();
+        ]);
 
       if (error) throw error;
 
       return {
         success: true,
         message: 'Registration successful! You are added to the Gentricks founding member waitlist.',
-        data: record,
       };
     } catch (err: any) {
       console.error('[Supabase Registration Error]:', err);
-      // Save local backup so submission is never lost
       saveLocalStorageBackup('gt_registrations', data);
       return {
         success: true,
@@ -83,7 +79,6 @@ export async function submitRegistration(data: RegistrationData): Promise<ApiRes
     }
   }
 
-  // Option B: Fallback to Express API or Client Backup
   const response = await postRequest('/api/register', data);
   if (!response.success) {
     saveLocalStorageBackup('gt_registrations', data);
@@ -99,7 +94,7 @@ export async function submitRegistration(data: RegistrationData): Promise<ApiRes
 export async function submitBuilderProject(data: BuilderData): Promise<ApiResponse> {
   if (isSupabaseConfigured()) {
     try {
-      const { data: record, error } = await supabase
+      const { error } = await supabase
         .from('builder_projects')
         .insert([
           {
@@ -108,15 +103,13 @@ export async function submitBuilderProject(data: BuilderData): Promise<ApiRespon
             founder_email: data.founderEmail.trim().toLowerCase(),
             summary: data.summary.trim(),
           },
-        ])
-        .select();
+        ]);
 
       if (error) throw error;
 
       return {
         success: true,
         message: 'Project submission received! Our incubation team will review your application.',
-        data: record,
       };
     } catch (err: any) {
       console.error('[Supabase Builder Error]:', err);
@@ -143,7 +136,7 @@ export async function submitBuilderProject(data: BuilderData): Promise<ApiRespon
 export async function submitPartnerInquiry(data: PartnerData): Promise<ApiResponse> {
   if (isSupabaseConfigured()) {
     try {
-      const { data: record, error } = await supabase
+      const { error } = await supabase
         .from('partner_inquiries')
         .insert([
           {
@@ -152,15 +145,13 @@ export async function submitPartnerInquiry(data: PartnerData): Promise<ApiRespon
             work_email: data.workEmail.trim().toLowerCase(),
             scope: data.scope.trim(),
           },
-        ])
-        .select();
+        ]);
 
       if (error) throw error;
 
       return {
         success: true,
         message: 'Partnership inquiry recorded! Our institutional relations lead will reach out promptly.',
-        data: record,
       };
     } catch (err: any) {
       console.error('[Supabase Partner Error]:', err);
@@ -187,7 +178,7 @@ export async function submitPartnerInquiry(data: PartnerData): Promise<ApiRespon
 export async function submitContactMessage(data: ContactData): Promise<ApiResponse> {
   if (isSupabaseConfigured()) {
     try {
-      const { data: record, error } = await supabase
+      const { error } = await supabase
         .from('contact_messages')
         .insert([
           {
@@ -197,15 +188,13 @@ export async function submitContactMessage(data: ContactData): Promise<ApiRespon
             purpose: data.purpose.trim(),
             message: data.message.trim(),
           },
-        ])
-        .select();
+        ]);
 
       if (error) throw error;
 
       return {
         success: true,
         message: 'Message transmitted successfully! Our team will reach out shortly.',
-        data: record,
       };
     } catch (err: any) {
       console.error('[Supabase Contact Error]:', err);

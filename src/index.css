@@ -1807,6 +1807,17 @@ h2 {
   margin-bottom: 6px;
 }
 
+.footer-legal-inline a {
+  color: #c9c9be;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 160ms ease;
+}
+
+.footer-legal-inline a:hover {
+  color: var(--yellow);
+}
+
 /* Legal & Compliance Page Common Layout */
 .legal-page {
   padding-top: clamp(100px, 12vw, 150px);

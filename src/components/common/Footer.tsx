@@ -22,6 +22,7 @@ export function Footer() {
           <address className="footer-contact">
             <a href="mailto:collab@gentricks.in"><Mail size={15} aria-hidden="true" /><span>Collab:</span> collab@gentricks.in</a>
             <a href="mailto:support@gentricks.in"><Mail size={15} aria-hidden="true" /><span>Support:</span> support@gentricks.in</a>
+            <a href="mailto:privacy@gentricks.in"><Mail size={15} aria-hidden="true" /><span>Privacy:</span> privacy@gentricks.in</a>
           </address>
         </div>
 
@@ -66,7 +67,9 @@ export function Footer() {
       </div>
       <div className="site-container footer-bottom">
         <span>© 2026 GENTRICKS. All rights reserved.</span>
-        <span>DPDP Act 2023 & DPDP Rules 2025 Ready · Built across Andhra Pradesh & India.</span>
+        <span className="footer-legal-inline">
+          <a href="#privacy-policy">Privacy Policy</a> · <a href="#terms">Terms & Conditions</a> · <a href="#privacy-requests">Data Rights</a> · DPDP Act 2023 Ready
+        </span>
       </div>
     </footer>
   );

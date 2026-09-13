@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, BookOpen, BrainCircuit, Briefcase, Code2, Flag, GraduationCap, Layers3, Lightbulb, Network, Palette, Rocket, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BookOpen, BrainCircuit, Briefcase, Layers3, Lightbulb, Rocket, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { ecosystemData, ecosystemPeople, programAreas } from '../data/ecosystem';
 import { EcosystemVisual } from './EcosystemVisual';

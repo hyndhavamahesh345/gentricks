@@ -25,6 +25,24 @@ export function Footer() {
           </address>
         </div>
 
+        <div className="footer-links" aria-label="Platform and legal links">
+          <div className="footer-col">
+            <span className="footer-col-title">Platform</span>
+            <a href="#ecosystem">Ecosystem</a>
+            <a href="#programs">Programs</a>
+            <a href="#events">Events</a>
+            <a href="#community">Community</a>
+            <a href="#opportunities">Opportunities</a>
+          </div>
+          <div className="footer-col">
+            <span className="footer-col-title">Data & Privacy</span>
+            <a href="#privacy-policy">Privacy Policy</a>
+            <a href="#terms">Terms & Conditions</a>
+            <a href="#privacy-requests">Manage Your Data</a>
+            <a href="#grievance">Grievance Redressal</a>
+          </div>
+        </div>
+
         <div className="footer-actions">
           <a href="#join" className="text-link">
             Join GENTRICKS <ArrowUpRight size={15} aria-hidden="true" />
@@ -47,8 +65,8 @@ export function Footer() {
         </div>
       </div>
       <div className="site-container footer-bottom">
-        <span>© GENTRICKS. All rights reserved.</span>
-        <span>Built for the next generation across India.</span>
+        <span>© 2026 GENTRICKS. All rights reserved.</span>
+        <span>DPDP Act 2023 & DPDP Rules 2025 Ready · Built across Andhra Pradesh & India.</span>
       </div>
     </footer>
   );

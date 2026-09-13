@@ -70,7 +70,21 @@ export function Homepage() {
                 <label><span>I am a</span><select required value={joinForm.role} onChange={(event) => setJoinForm({ ...joinForm, role: event.target.value })}><option value="">Choose one</option><option>Student</option><option>Builder</option><option>Creator</option><option>Founder</option><option>Professional</option><option>Community</option></select></label>
               </div>
               <label className="join-interest"><span>Interested in</span><select required value={joinForm.interests} onChange={(event) => setJoinForm({ ...joinForm, interests: event.target.value })}><option value="">Choose an area</option><option>Events and workshops</option><option>Hackathons and projects</option><option>Community</option><option>Opportunities</option><option>Startup ecosystem</option></select></label>
-              <label className="join-consent"><input required type="checkbox" checked={joinForm.consent} onChange={(event) => setJoinForm({ ...joinForm, consent: event.target.checked })} /><span>I agree to receive relevant GENTRICKS updates.</span></label>
+              <label className="join-consent">
+                <input
+                  required
+                  type="checkbox"
+                  checked={joinForm.consent}
+                  onChange={(event) => setJoinForm({ ...joinForm, consent: event.target.checked })}
+                />
+                <span>
+                  I consent to GENTRICKS processing my personal data in accordance with the{' '}
+                  <a href="#privacy-policy" className="consent-link">
+                    Privacy Policy
+                  </a>{' '}
+                  for community updates, programs, and opportunities.
+                </span>
+              </label>
               <button type="submit" className="button button-dark" disabled={joinStatus === 'submitting'}>{joinStatus === 'submitting' ? 'Saving…' : 'Join GENTRICKS'} <ArrowUpRight size={18} aria-hidden="true" /></button>
               {joinStatus === 'error' && <small className="join-error">We couldn’t save your response yet. Please try again.</small>}
             </form>

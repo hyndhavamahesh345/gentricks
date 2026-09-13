@@ -22,7 +22,6 @@ export function Footer() {
           <address className="footer-contact">
             <a href="mailto:collab@gentricks.in"><Mail size={15} aria-hidden="true" /><span>Collab:</span> collab@gentricks.in</a>
             <a href="mailto:support@gentricks.in"><Mail size={15} aria-hidden="true" /><span>Support:</span> support@gentricks.in</a>
-            <a href="mailto:privacy@gentricks.in"><Mail size={15} aria-hidden="true" /><span>Privacy:</span> privacy@gentricks.in</a>
           </address>
         </div>
 

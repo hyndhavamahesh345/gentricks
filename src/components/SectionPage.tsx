@@ -1,13 +1,88 @@
-import { ArrowRight, ArrowUpRight, BookOpen, BrainCircuit, Briefcase, Layers3, Lightbulb, Rocket, Sparkles } from 'lucide-react';
-import { useState } from 'react';
-import { ecosystemData, ecosystemPeople, programAreas } from '../data/ecosystem';
+import { ArrowUpRight, Briefcase, Building2, Calendar, ChevronLeft, ChevronRight, Code2, Handshake, Layers3, Lightbulb, Megaphone, PenTool, Rocket, TrendingUp, Trophy, Users } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ecosystemData, ecosystemPeople } from '../data/ecosystem';
 import { EcosystemVisual } from './EcosystemVisual';
 
 export type SectionPageName = 'ecosystem' | 'programs' | 'events' | 'community' | 'opportunities';
 
-const programIcons = [BrainCircuit, BookOpen, Lightbulb, Sparkles, Briefcase, Rocket];
 const eventFormats = ['Technology Events', 'AI Events', 'Hackathons', 'Startup Events', 'Workshops', 'Community Meetups', 'Creator Experiences', 'Summits'];
 const opportunityTypes = ['Jobs', 'Internships', 'Projects', 'Hackathons', 'Competitions', 'Fellowships', 'Collaborations', 'Startup opportunities'];
+
+const whoWeBringTogether = [
+  {
+    icon: Lightbulb,
+    title: 'STUDENTS & INNOVATORS',
+    description: 'Learn, participate in events, build projects, and discover opportunities.',
+  },
+  {
+    icon: Code2,
+    title: 'BUILDERS & DEVELOPERS',
+    description: 'Build with technology, join challenges, collaborate, and showcase your work.',
+  },
+  {
+    icon: Rocket,
+    title: 'FOUNDERS & ENTREPRENEURS',
+    description: 'Connect with talent, mentors, partners, and opportunities to grow.',
+  },
+  {
+    icon: PenTool,
+    title: 'CREATORS & EXPERTS',
+    description: 'Share knowledge, create experiences, and collaborate with the next generation.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'INVESTORS & MENTORS',
+    description: 'Discover promising ideas, founders, and emerging talent.',
+  },
+  {
+    icon: Briefcase,
+    title: 'INDUSTRY & ORGANIZATIONS',
+    description: 'Connect with talent, showcase solutions, and build strategic partnerships.',
+  },
+  {
+    icon: Users,
+    title: 'COMMUNITIES & INSTITUTIONS',
+    description: 'Build communities, host programs, and create meaningful opportunities.',
+  },
+  {
+    icon: Megaphone,
+    title: 'BRANDS & SPONSORS',
+    description: 'Connect with student communities, events, and emerging talent through meaningful sponsorships and collaborations.',
+  },
+];
+
+const whatWeDoOfferings = [
+  {
+    icon: Calendar,
+    title: 'Events & Experiences',
+    description: 'Tech summits, workshops, hackathons, conferences and community events.',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Learning & Innovation',
+    description: 'Workshops, challenges, projects and hands-on technology experiences.',
+  },
+  {
+    icon: Building2,
+    title: 'Campus & Community',
+    description: 'Campus chapters, student communities and institutional collaborations.',
+  },
+  {
+    icon: Trophy,
+    title: 'Opportunities',
+    description: 'Internships, careers, competitions, mentorship and networking.',
+  },
+  {
+    icon: Handshake,
+    title: 'Sponsorships & Partnerships',
+    description: 'Connect events and communities with brands, sponsors and industry partners.',
+  },
+  {
+    icon: Rocket,
+    title: 'Startup & Builder Ecosystem',
+    description: 'Support founders, builders and emerging ideas through connections and opportunities.',
+  },
+];
 
 function PageHero({ label, title, copy }: { label: string; title: string; copy: string }) {
   return <section className="page-hero"><div className="site-container"><p className="eyebrow hero-eyebrow"><span aria-hidden="true" /> {label}</p><h1>{title}</h1><p>{copy}</p></div></section>;
@@ -34,7 +109,130 @@ function EcosystemPage() {
 }
 
 function ProgramsPage() {
-  return <><PageHero label="What we do" title="Make room for what is next." copy="Focused experiences at the intersection of technology, learning, community, and impact." /><section className="programs section-space"><div className="site-container"><div className="program-grid">{programAreas.map(([title, description], index) => { const Icon = programIcons[index]; return <article className={'program-card program-card-' + index} key={title}><Icon size={28} aria-hidden="true" /><span>0{index + 1}</span><h2>{title}</h2><p>{description}</p><ArrowRight size={19} aria-hidden="true" /></article>; })}</div></div></section></>;
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollState = () => {
+    const el = sliderRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 10);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
+  };
+
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+    updateScrollState();
+    el.addEventListener('scroll', updateScrollState, { passive: true });
+    window.addEventListener('resize', updateScrollState);
+    return () => {
+      el.removeEventListener('scroll', updateScrollState);
+      window.removeEventListener('resize', updateScrollState);
+    };
+  }, []);
+
+  const handleScroll = (direction: 'left' | 'right') => {
+    const el = sliderRef.current;
+    if (!el) return;
+    const card = el.querySelector('.discovery-card') as HTMLElement | null;
+    const scrollAmount = card ? card.offsetWidth + 20 : 310;
+    el.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <div className="programs-view">
+      {/* 1. Who We Bring Together (Competitor-Style High Impact Carousel) */}
+      <section className="discovery-section" aria-labelledby="discovery-title">
+        <div className="site-container">
+          <div className="discovery-header">
+            <h1 id="discovery-title" className="discovery-title">
+              <span className="discovery-title-main">WHO WE</span>
+              <span className="discovery-title-accent theme-yellow">BRING TOGETHER.</span>
+            </h1>
+          </div>
+
+          <div className="discovery-carousel-wrapper">
+            <button
+              type="button"
+              className="discovery-nav-btn discovery-nav-left theme-yellow"
+              onClick={() => handleScroll('left')}
+              disabled={!canScrollLeft}
+              aria-label="Scroll left"
+            >
+              <ChevronLeft size={44} strokeWidth={2.4} aria-hidden="true" />
+            </button>
+
+            <div className="discovery-track theme-yellow" ref={sliderRef}>
+              {whoWeBringTogether.map((card, idx) => {
+                const Icon = card.icon;
+                return (
+                  <article key={idx} className="discovery-card theme-yellow">
+                    <div className="discovery-card-icon">
+                      <Icon size={38} strokeWidth={1.8} aria-hidden="true" />
+                    </div>
+                    <h2 className="discovery-card-title">{card.title}</h2>
+                    <p className="discovery-card-desc">{card.description}</p>
+                  </article>
+                );
+              })}
+            </div>
+
+            <button
+              type="button"
+              className="discovery-nav-btn discovery-nav-right theme-yellow"
+              onClick={() => handleScroll('right')}
+              disabled={!canScrollRight}
+              aria-label="Scroll right"
+            >
+              <ChevronRight size={44} strokeWidth={2.5} aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. What We Do (What GENTRICKS Actually Provides) */}
+      <section className="what-we-do-section section-space" aria-labelledby="what-we-do-title">
+        <div className="site-container">
+          <div className="section-lead">
+            <p className="eyebrow"><span aria-hidden="true" /> What GENTRICKS Provides</p>
+            <h2 id="what-we-do-title">What We <em>Do.</em></h2>
+            <p className="section-copy">
+              Focused experiences, infrastructure, and access at the intersection of technology, community, and momentum.
+            </p>
+          </div>
+
+          <div className="what-we-do-grid">
+            {whatWeDoOfferings.map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <article key={item.title} className="what-we-do-card">
+                  <div className="what-we-do-card-top">
+                    <Icon size={28} strokeWidth={1.8} className="what-we-do-icon" aria-hidden="true" />
+                    <span className="what-we-do-number">0{idx + 1}</span>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="what-we-do-actions">
+            <a href="#join" className="button button-primary">
+              Join GENTRICKS <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+            <a href="mailto:collab@gentricks.in" className="button button-ghost">
+              Partner or Sponsor <ArrowUpRight size={17} aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 }
 
 function EventsPage() {

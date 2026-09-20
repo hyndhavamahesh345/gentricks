@@ -2,6 +2,7 @@ import { ArrowUpRight, Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const navItems = [
+  { label: 'Our Story', href: '#our-story' },
   { label: 'Ecosystem', href: '#ecosystem' },
   { label: 'Programs', href: '#programs' },
   { label: 'Events', href: '#events' },

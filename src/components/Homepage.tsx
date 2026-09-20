@@ -49,6 +49,83 @@ export function Homepage() {
         </div>
       </section>
 
+      <section id="our-story" className="our-story-section section-space" aria-labelledby="story-title">
+        <div className="site-container">
+          <div className="our-story-grid">
+            <div className="our-story-lead">
+              <p className="eyebrow"><span aria-hidden="true" /> 02 / OUR STORY</p>
+              <h2 id="story-title">
+                Born From Grassroots Ambition. <br />
+                <em>Built For The Next Generation.</em>
+              </h2>
+              <p className="story-intro-text">
+                <strong>GENTRICKS</strong> started with a simple, stubborn observation in Andhra Pradesh: raw talent, curious minds, and ambitious builders are everywhere — but the opportunities, communities, and infrastructure to turn that potential into real-world impact are not.
+              </p>
+              <p className="story-detail-text">
+                Too many young developers, designers, creators, and future founders were building in isolation — separated by academic silos, limited access, or opportunities concentrated in distant metros. We created <strong>GENTRICKS</strong> as open ground where people come before profiles, ideas turn into shipped reality, and ambition finds a genuine community.
+              </p>
+
+              <div className="story-quote">
+                <p>
+                  “We didn’t build GENTRICKS to be another bullet point on a résumé. We built it to be the catalyst for what you build, launch, and lead next.”
+                </p>
+                <span>— THE GENTRICKS FOUNDING CONVICTION</span>
+              </div>
+
+              <div className="story-stats-row">
+                <div className="story-stat-item">
+                  <span className="story-stat-val">AP Roots</span>
+                  <span className="story-stat-label">Starting locally, building for pan-India momentum</span>
+                </div>
+                <div className="story-stat-item">
+                  <span className="story-stat-val">0 → 1</span>
+                  <span className="story-stat-label">Turning ideas into real-world builds</span>
+                </div>
+                <div className="story-stat-item">
+                  <span className="story-stat-val">Open</span>
+                  <span className="story-stat-label">Open to every student, builder & creator</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="story-cards-col" aria-label="Our core story milestones and principles">
+              <article className="story-timeline-card">
+                <div className="story-card-header">
+                  <span className="story-card-tag"><span aria-hidden="true" /> The Genesis</span>
+                  <span className="story-card-step">01</span>
+                </div>
+                <h3>Breaking the Silos</h3>
+                <p>
+                  Engineering, creative arts, business, and community building rarely meet under one roof. GENTRICKS brings these worlds together to create cross-disciplinary collaborations, ideas, and opportunities.
+                </p>
+              </article>
+
+              <article className="story-timeline-card">
+                <div className="story-card-header">
+                  <span className="story-card-tag"><span aria-hidden="true" /> The Culture</span>
+                  <span className="story-card-step">02</span>
+                </div>
+                <h3>Action Over Speculation</h3>
+                <p>
+                  We prioritize building over passive learning — through hackathons, collaborative projects, real-world challenges, creator initiatives, and hands-on experiences. If you have an idea, you build it here.
+                </p>
+              </article>
+
+              <article className="story-timeline-card">
+                <div className="story-card-header">
+                  <span className="story-card-tag"><span aria-hidden="true" /> The Horizon</span>
+                  <span className="story-card-step">03</span>
+                </div>
+                <h3>Ecosystem For Leadership</h3>
+                <p>
+                  From grassroots campus chapters to industry connections, partnerships, opportunities, and founder pathways — we are building long-term rails for the next generation to connect, create, and lead.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="paths" aria-labelledby="paths-title">
         <div className="site-container">
           <div className="paths-heading"><p className="eyebrow"><span aria-hidden="true" /> Choose your way in</p><h2 id="paths-title">Come as you are. <em>Grow from there.</em></h2></div>

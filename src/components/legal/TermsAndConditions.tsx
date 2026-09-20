@@ -82,7 +82,7 @@ export function TermsAndConditions() {
             <div className="officer-card">
               <h3>Legal & Operations Desk</h3>
               <p><strong>Official Email:</strong> <a href="mailto:collab@gentricks.in">collab@gentricks.in</a></p>
-              <p><strong>Privacy Concerns:</strong> <a href="mailto:privacy@gentricks.in">privacy@gentricks.in</a></p>
+              <p><strong>Privacy Concerns:</strong> <a href="mailto:support@gentricks.in">support@gentricks.in</a></p>
             </div>
           </section>
         </div>

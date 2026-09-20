@@ -25,17 +25,19 @@ function App() {
   useEffect(() => {
     const performScroll = () => {
       const hash = window.location.hash;
-      if (hash === '#join') {
-        const scrollToJoin = () => {
-          const el = document.getElementById('join');
+      const targetId = hash.replace('#', '').split('?')[0];
+      if (targetId === 'join' || targetId === 'our-story' || targetId === 'story') {
+        const targetElementId = targetId === 'join' ? 'join' : 'our-story';
+        const scrollToTarget = () => {
+          const el = document.getElementById(targetElementId);
           if (el) {
             el.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         };
         // Give React DOM a moment to mount Homepage if coming from another route
         requestAnimationFrame(() => {
-          scrollToJoin();
-          setTimeout(scrollToJoin, 50);
+          scrollToTarget();
+          setTimeout(scrollToTarget, 60);
         });
       } else if (!hash || hash === '#top') {
         window.scrollTo({ top: 0, behavior: 'smooth' });

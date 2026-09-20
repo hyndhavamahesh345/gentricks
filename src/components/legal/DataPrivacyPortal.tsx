@@ -77,12 +77,12 @@ export function DataPrivacyPortal() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Pre-populate an email link for immediate dispatch to privacy@gentricks.in
+    // Pre-populate an email link for immediate dispatch to support@gentricks.in
     const subject = encodeURIComponent(`[DPDP Request: ${currentOption.title}] - ${fullName}`);
     const body = encodeURIComponent(
       `Full Name: ${fullName}\nRegistered Email: ${email}\nRequest Category: ${currentOption.title}\nStatutory Reference: ${currentOption.legalBasis}\n\nSpecific Details / Notes:\n${details || 'No additional comments provided.'}\n\nSubmitted via GENTRICKS Data & Privacy Management Portal on ${new Date().toISOString()}`
     );
-    window.location.href = `mailto:privacy@gentricks.in?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:support@gentricks.in?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
@@ -94,7 +94,7 @@ export function DataPrivacyPortal() {
           <h1 id="portal-heading">Manage Your <em>Data & Privacy</em></h1>
           <p className="legal-meta">
             <span>Direct statutory rights execution under the Digital Personal Data Protection Act, 2023</span>
-            <span>Official Channel: privacy@gentricks.in</span>
+            <span>Official Channel: support@gentricks.in</span>
           </p>
         </header>
 
@@ -139,11 +139,11 @@ export function DataPrivacyPortal() {
                 <h3>Request Prepared</h3>
                 <p>
                   Your email client has been opened with your preformatted <strong>{currentOption.title}</strong> ticket
-                  addressed to <code>privacy@gentricks.in</code>.
+                  addressed to <code>support@gentricks.in</code>.
                 </p>
                 <p className="success-sub">
                   If your email client didn't open automatically, you can email directly to{' '}
-                  <a href="mailto:privacy@gentricks.in" className="text-link">privacy@gentricks.in</a> with your registered email: <strong>{email}</strong>.
+                  <a href="mailto:support@gentricks.in" className="text-link">support@gentricks.in</a> with your registered email: <strong>{email}</strong>.
                 </p>
                 <p className="timeline-notice">
                   <Info size={16} aria-hidden="true" />

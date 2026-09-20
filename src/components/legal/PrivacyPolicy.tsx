@@ -27,8 +27,8 @@ export function PrivacyPolicy() {
             <a href="#privacy-requests" className="button button-primary">
               Manage Your Data & Rights <ArrowUpRight size={16} aria-hidden="true" />
             </a>
-            <a href="mailto:privacy@gentricks.in" className="button button-ghost">
-              <Mail size={16} aria-hidden="true" /> Contact Privacy Officer
+            <a href="mailto:support@gentricks.in" className="button button-ghost">
+              <Mail size={16} aria-hidden="true" /> Contact Support Officer
             </a>
           </div>
         </div>
@@ -186,7 +186,7 @@ export function PrivacyPolicy() {
               </div>
             </div>
             <p>
-              To exercise any of these rights, visit our dedicated <a href="#privacy-requests" className="text-link">Data & Privacy Requests Portal</a> or email us directly at <a href="mailto:privacy@gentricks.in" className="text-link">privacy@gentricks.in</a>.
+              To exercise any of these rights, visit our dedicated <a href="#privacy-requests" className="text-link">Data & Privacy Requests Portal</a> or email us directly at <a href="mailto:support@gentricks.in" className="text-link">support@gentricks.in</a>.
             </p>
           </section>
 
@@ -200,7 +200,7 @@ export function PrivacyPolicy() {
               <h3>Data Protection Grievance Contact</h3>
               <p><strong>Entity:</strong> GENTRICKS Ecosystem</p>
               <p><strong>Designation:</strong> Data Protection Grievance Officer</p>
-              <p><strong>Official Email:</strong> <a href="mailto:privacy@gentricks.in">privacy@gentricks.in</a></p>
+              <p><strong>Official Email:</strong> <a href="mailto:support@gentricks.in">support@gentricks.in</a></p>
               <p><strong>Response Timeline:</strong> Acknowledgement within 48 business hours; substantive resolution within 30 days as prescribed by law.</p>
               <p>
                 If your grievance is not resolved satisfactorily by GENTRICKS within the statutory timeframe, you hold the right to

@@ -132,8 +132,8 @@ export function PrivacyPolicy() {
                 </thead>
                 <tbody>
                   <tr>
-                    <td><strong>Supabase</strong></td>
-                    <td>Database storage & encrypted API layer</td>
+                    <td><strong>Google Firebase</strong></td>
+                    <td>Cloud database & secure API infrastructure</td>
                     <td>Community member registrations, contact records</td>
                   </tr>
                   <tr>

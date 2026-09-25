@@ -1,12 +1,12 @@
 import { ArrowUpRight, Code2, Flag, GraduationCap, Network, Palette, Rocket } from 'lucide-react';
 import { useState } from 'react';
 import { participationPaths } from '../data/ecosystem';
-import { submitCommunityMember } from '../services/supabase';
+import { submitCommunityMember } from '../services/firebase';
 
 const pathIcons = [Code2, Palette, GraduationCap, Flag, Rocket, Network];
 
 export function Homepage() {
-  const [joinForm, setJoinForm] = useState({ full_name: '', email: '', city: '', role: '', interests: '', consent: false });
+  const [joinForm, setJoinForm] = useState({ full_name: '', email: '', phone: '', city: '', role: '', interests: '', consent: false });
   const [joinStatus, setJoinStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const handleJoinSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -128,7 +128,7 @@ export function Homepage() {
 
       <section className="paths" aria-labelledby="paths-title">
         <div className="site-container">
-          <div className="paths-heading"><p className="eyebrow"><span aria-hidden="true" /> Choose your way in</p><h2 id="paths-title">Come as you are. <em>Grow from there.</em></h2></div>
+          <div className="paths-heading"><p className="eyebrow"><span aria-hidden="true" /> Choose your way in</p><h2 id="paths-title">Come as you are. <em>Grow from here.</em></h2></div>
           <div className="paths-grid">{participationPaths.map(([title, description], index) => { const Icon = pathIcons[index]; return <article className="path-card" key={title}><Icon size={26} aria-hidden="true" /><h3>{title}</h3><p>{description}</p></article>; })}</div>
         </div>
       </section>
@@ -143,10 +143,11 @@ export function Homepage() {
               <div className="join-form-grid">
                 <label><span>Full name</span><input required value={joinForm.full_name} onChange={(event) => setJoinForm({ ...joinForm, full_name: event.target.value })} /></label>
                 <label><span>Email</span><input required type="email" value={joinForm.email} onChange={(event) => setJoinForm({ ...joinForm, email: event.target.value })} /></label>
+                <label><span>Phone number</span><input required type="tel" placeholder="+91 ..." value={joinForm.phone} onChange={(event) => setJoinForm({ ...joinForm, phone: event.target.value })} /></label>
                 <label><span>City</span><input required value={joinForm.city} onChange={(event) => setJoinForm({ ...joinForm, city: event.target.value })} /></label>
                 <label><span>I am a</span><select required value={joinForm.role} onChange={(event) => setJoinForm({ ...joinForm, role: event.target.value })}><option value="">Choose one</option><option>Student</option><option>Builder</option><option>Creator</option><option>Founder</option><option>Professional</option><option>Community</option></select></label>
+                <label><span>Interested in</span><select required value={joinForm.interests} onChange={(event) => setJoinForm({ ...joinForm, interests: event.target.value })}><option value="">Choose an area</option><option>Events and workshops</option><option>Hackathons and projects</option><option>Community</option><option>Opportunities</option><option>Startup ecosystem</option></select></label>
               </div>
-              <label className="join-interest"><span>Interested in</span><select required value={joinForm.interests} onChange={(event) => setJoinForm({ ...joinForm, interests: event.target.value })}><option value="">Choose an area</option><option>Events and workshops</option><option>Hackathons and projects</option><option>Community</option><option>Opportunities</option><option>Startup ecosystem</option></select></label>
               <label className="join-consent">
                 <input
                   required

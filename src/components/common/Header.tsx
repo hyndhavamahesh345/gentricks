@@ -5,8 +5,6 @@ const navItems = [
   { label: 'Our Story', href: '#our-story' },
   { label: 'Ecosystem', href: '#ecosystem' },
   { label: 'Programs', href: '#programs' },
-  { label: 'Events', href: '#events' },
-  { label: 'Community', href: '#community' },
   { label: 'Opportunities', href: '#opportunities' },
 ];
 

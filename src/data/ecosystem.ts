@@ -9,39 +9,64 @@ export interface EventRecord {
   title: string;
   startsAt: string;
   format: 'in-person' | 'online' | 'hybrid';
+  venue?: string;
+  dates?: string;
+  round1Deadline?: string;
+  shortlistDate?: string;
+  link?: string;
+  description?: string;
   communityId?: string;
 }
 
 export interface OpportunityRecord {
   id: string;
   title: string;
-  type: 'job' | 'internship' | 'project' | 'hackathon' | 'competition' | 'fellowship' | 'collaboration';
+  type: 'internship' | 'hackathon' | 'collaboration';
   organization?: string;
+  deadline?: string;
+  dates?: string;
+  link?: string;
   communityId?: string;
 }
 
-/**
- * Empty by design: content can arrive from a CMS or database without the site
- * presenting unverified communities, events, or opportunities as real.
- */
 export const ecosystemData: {
   communities: CommunityRecord[];
   events: EventRecord[];
   opportunities: OpportunityRecord[];
 } = {
   communities: [],
-  events: [],
-  opportunities: [],
+  events: [
+    {
+      id: 'agentic-x-2',
+      title: 'AGENTIC X 2.0',
+      startsAt: '2026-12-08',
+      format: 'in-person',
+      venue: 'Woxsen University',
+      dates: '8–9 Dec',
+      round1Deadline: '27 Nov',
+      shortlistDate: '28 Nov',
+      link: 'https://fts.aircwou.in/hackathon',
+      description: 'Next-generation AI and builder experience bringing developers, creators, and future founders together.',
+    },
+  ],
+  opportunities: [
+    {
+      id: 'agentic-x-2-opp',
+      title: 'AGENTIC X 2.0 Hackathon',
+      type: 'hackathon',
+      organization: 'Woxsen University',
+      deadline: 'Round 1: 27 Nov · Shortlist: 28 Nov',
+      dates: '8–9 Dec',
+      link: 'https://fts.aircwou.in/hackathon',
+    },
+  ],
 };
 
 export const ecosystemPeople = [
   ['Builders', 'Turn curiosity into things that work.'],
   ['Creators', 'Shape stories people want to share.'],
   ['Students', 'Find practical ways to grow.'],
-  ['Innovators', 'Explore what comes next.'],
   ['Entrepreneurs', 'Move ideas toward momentum.'],
-  ['Professionals', 'Give and gain perspective.'],
-  ['Communities', 'Bring ambitious people together.'],
 ] as const;
 
 export const programAreas = [

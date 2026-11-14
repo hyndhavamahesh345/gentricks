@@ -9,11 +9,12 @@ import { SectionPage, type SectionPageName } from './components/SectionPage';
 
 type AppRoute = SectionPageName | 'privacy-policy' | 'terms' | 'privacy-requests' | 'grievance';
 
-const sectionPages: SectionPageName[] = ['ecosystem', 'programs', 'events', 'community', 'opportunities'];
+const sectionPages: SectionPageName[] = ['ecosystem', 'programs', 'opportunities'];
 const legalPages: AppRoute[] = ['privacy-policy', 'terms', 'privacy-requests', 'grievance'];
 
 function readPage(): AppRoute | null {
   const value = window.location.hash.replace('#', '').split('?')[0];
+  if (value === 'events') return 'opportunities';
   if (sectionPages.includes(value as SectionPageName)) return value as SectionPageName;
   if (legalPages.includes(value as AppRoute)) return value as AppRoute;
   return null;
@@ -26,8 +27,8 @@ function App() {
     const performScroll = () => {
       const hash = window.location.hash;
       const targetId = hash.replace('#', '').split('?')[0];
-      if (targetId === 'join' || targetId === 'our-story' || targetId === 'story') {
-        const targetElementId = targetId === 'join' ? 'join' : 'our-story';
+      if (targetId === 'join' || targetId === 'our-story' || targetId === 'story' || targetId === 'community') {
+        const targetElementId = targetId === 'our-story' || targetId === 'story' ? 'our-story' : 'join';
         const scrollToTarget = () => {
           const el = document.getElementById(targetElementId);
           if (el) {

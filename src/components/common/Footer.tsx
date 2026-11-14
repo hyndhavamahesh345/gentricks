@@ -30,8 +30,6 @@ export function Footer() {
             <span className="footer-col-title">Platform</span>
             <a href="#ecosystem">Ecosystem</a>
             <a href="#programs">Programs</a>
-            <a href="#events">Events</a>
-            <a href="#community">Community</a>
             <a href="#opportunities">Opportunities</a>
           </div>
           <div className="footer-col">

@@ -1,9 +1,6 @@
-import { ArrowUpRight, Code2, Flag, GraduationCap, Network, Palette, Rocket } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useState } from 'react';
-import { participationPaths } from '../data/ecosystem';
 import { submitCommunityMember } from '../services/firebase';
-
-const pathIcons = [Code2, Palette, GraduationCap, Flag, Rocket, Network];
 
 export function Homepage() {
   const [joinForm, setJoinForm] = useState({ full_name: '', email: '', phone: '', city: '', role: '', interests: '', consent: false });
@@ -27,15 +24,14 @@ export function Homepage() {
           <div className="hero-copy">
             <p className="eyebrow hero-eyebrow"><span aria-hidden="true" /> A technology and innovation ecosystem</p>
             <h1 id="hero-title">Where the Next Generation <em>Connects, Creates,</em> and Leads.</h1>
-            <p className="hero-description">GENTRICKS is a technology-driven ecosystem for builders, creators, innovators, entrepreneurs, and future leaders.</p>
+            <p className="hero-description">GENTRICKS is a technology-driven ecosystem for builders, creators, students, and entrepreneurs.</p>
             <div className="hero-actions">
               <a href="#join" className="button button-primary">Join GENTRICKS <ArrowUpRight size={17} aria-hidden="true" /></a>
             </div>
             <p className="hero-note">Starting in Andhra Pradesh. Built to grow with people.</p>
           </div>
           <figure className="hero-visual hero-image-visual">
-            <img src="https://images.pexels.com/photos/6804068/pexels-photo-6804068.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="A real technology team collaborating around computers in a modern workspace." width="1600" height="1067" fetchPriority="high" />
-            <figcaption className="hero-image-caption"><span>01 / GENTRICKS SIGNAL</span><span>People · Ideas · Impact</span></figcaption>
+            <img src="/gentricks-signal-v1.png" alt="GENTRICKS community and builders collaborating." width="1600" height="1067" fetchPriority="high" />
           </figure>
         </div>
         <div className="site-container hero-manifesto" aria-label="GENTRICKS values"><span>People before profiles.</span><span>Ideas into action.</span><span>Ambition with community.</span></div>
@@ -49,6 +45,7 @@ export function Homepage() {
         </div>
       </section>
 
+      {/* 02 / OUR STORY - Only section modified per request */}
       <section id="our-story" className="our-story-section section-space" aria-labelledby="story-title">
         <div className="site-container">
           <div className="our-story-grid">
@@ -59,77 +56,26 @@ export function Homepage() {
                 <em>Built For The Next Generation.</em>
               </h2>
               <p className="story-intro-text">
-                <strong>GENTRICKS</strong> started with a simple, stubborn observation in Andhra Pradesh: raw talent, curious minds, and ambitious builders are everywhere — but the opportunities, communities, and infrastructure to turn that potential into real-world impact are not.
+                <strong>GENTRICKS</strong> started with a simple, stubborn observation: raw talent, curious minds, and ambitious builders are everywhere — but the opportunities, communities, and infrastructure to turn that potential into real-world impact are not.
               </p>
               <p className="story-detail-text">
                 Too many young developers, designers, creators, and future founders were building in isolation — separated by academic silos, limited access, or opportunities concentrated in distant metros. We created <strong>GENTRICKS</strong> as open ground where people come before profiles, ideas turn into shipped reality, and ambition finds a genuine community.
               </p>
-
-              <div className="story-quote">
-                <p>
-                  “We didn’t build GENTRICKS to be another bullet point on a résumé. We built it to be the catalyst for what you build, launch, and lead next.”
-                </p>
-                <span>— THE GENTRICKS FOUNDING CONVICTION</span>
-              </div>
-
-              <div className="story-stats-row">
-                <div className="story-stat-item">
-                  <span className="story-stat-val">AP Roots</span>
-                  <span className="story-stat-label">Starting locally, building for pan-India momentum</span>
-                </div>
-                <div className="story-stat-item">
-                  <span className="story-stat-val">0 → 1</span>
-                  <span className="story-stat-label">Turning ideas into real-world builds</span>
-                </div>
-                <div className="story-stat-item">
-                  <span className="story-stat-val">Open</span>
-                  <span className="story-stat-label">Open to every student, builder & creator</span>
-                </div>
-              </div>
             </div>
 
-            <div className="story-cards-col" aria-label="Our core story milestones and principles">
-              <article className="story-timeline-card">
-                <div className="story-card-header">
-                  <span className="story-card-tag"><span aria-hidden="true" /> The Genesis</span>
-                  <span className="story-card-step">01</span>
-                </div>
-                <h3>Breaking the Silos</h3>
-                <p>
-                  Engineering, creative arts, business, and community building rarely meet under one roof. GENTRICKS brings these worlds together to create cross-disciplinary collaborations, ideas, and opportunities.
-                </p>
-              </article>
-
+            <div className="story-cards-col" aria-label="Our core story principles">
               <article className="story-timeline-card">
                 <div className="story-card-header">
                   <span className="story-card-tag"><span aria-hidden="true" /> The Culture</span>
-                  <span className="story-card-step">02</span>
+                  <span className="story-card-step">01</span>
                 </div>
                 <h3>Action Over Speculation</h3>
                 <p>
                   We prioritize building over passive learning — through hackathons, collaborative projects, real-world challenges, creator initiatives, and hands-on experiences. If you have an idea, you build it here.
                 </p>
               </article>
-
-              <article className="story-timeline-card">
-                <div className="story-card-header">
-                  <span className="story-card-tag"><span aria-hidden="true" /> The Horizon</span>
-                  <span className="story-card-step">03</span>
-                </div>
-                <h3>Ecosystem For Leadership</h3>
-                <p>
-                  From grassroots campus chapters to industry connections, partnerships, opportunities, and founder pathways — we are building long-term rails for the next generation to connect, create, and lead.
-                </p>
-              </article>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="paths" aria-labelledby="paths-title">
-        <div className="site-container">
-          <div className="paths-heading"><p className="eyebrow"><span aria-hidden="true" /> Choose your way in</p><h2 id="paths-title">Come as you are. <em>Grow from here.</em></h2></div>
-          <div className="paths-grid">{participationPaths.map(([title, description], index) => { const Icon = pathIcons[index]; return <article className="path-card" key={title}><Icon size={26} aria-hidden="true" /><h3>{title}</h3><p>{description}</p></article>; })}</div>
         </div>
       </section>
 
@@ -145,8 +91,8 @@ export function Homepage() {
                 <label><span>Email</span><input required type="email" value={joinForm.email} onChange={(event) => setJoinForm({ ...joinForm, email: event.target.value })} /></label>
                 <label><span>Phone number</span><input required type="tel" placeholder="+91 ..." value={joinForm.phone} onChange={(event) => setJoinForm({ ...joinForm, phone: event.target.value })} /></label>
                 <label><span>City</span><input required value={joinForm.city} onChange={(event) => setJoinForm({ ...joinForm, city: event.target.value })} /></label>
-                <label><span>I am a</span><select required value={joinForm.role} onChange={(event) => setJoinForm({ ...joinForm, role: event.target.value })}><option value="">Choose one</option><option>Student</option><option>Builder</option><option>Creator</option><option>Founder</option><option>Professional</option><option>Community</option></select></label>
-                <label><span>Interested in</span><select required value={joinForm.interests} onChange={(event) => setJoinForm({ ...joinForm, interests: event.target.value })}><option value="">Choose an area</option><option>Events and workshops</option><option>Hackathons and projects</option><option>Community</option><option>Opportunities</option><option>Startup ecosystem</option></select></label>
+                <label><span>I am a</span><select required value={joinForm.role} onChange={(event) => setJoinForm({ ...joinForm, role: event.target.value })}><option value="">Choose one</option><option>Builder</option><option>Creator</option><option>Student</option><option>Entrepreneur</option></select></label>
+                <label><span>Interested in</span><select required value={joinForm.interests} onChange={(event) => setJoinForm({ ...joinForm, interests: event.target.value })}><option value="">Choose an area</option><option>Events and workshops</option><option>Hackathons and projects</option><option>Opportunities</option><option>Startup ecosystem</option></select></label>
               </div>
               <label className="join-consent">
                 <input

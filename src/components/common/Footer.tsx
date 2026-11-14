@@ -1,4 +1,5 @@
 import { ArrowUpRight, Mail } from 'lucide-react';
+import { GentricksLogo } from './GentricksLogo';
 
 const socialLinks = [
   { label: 'Instagram', href: 'https://www.instagram.com/gentricks__/', icon: 'instagram' },
@@ -15,7 +16,7 @@ export function Footer() {
         <div className="footer-brand">
           <a href="#top" aria-label="GENTRICKS home">
             <span className="footer-lockup">
-              <img src="/gentricks-logo.svg" alt="" className="footer-logo" />
+              <GentricksLogo className="footer-logo" />
             </span>
           </a>
           <p>Where the Next Generation Connects, Creates, and Leads.</p>

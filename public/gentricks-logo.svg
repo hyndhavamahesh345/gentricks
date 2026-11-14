@@ -1,16 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="85 125 220 125" width="100%" height="100%">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Syne:wght@800;900&amp;display=swap');
       .font-gen {
-        font-family: 'Syne', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+        font-family: 'Syne', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
         font-weight: 900;
         font-size: 34.44px;
         fill: #000000;
         letter-spacing: -0.5px;
       }
       .font-tricks {
-        font-family: 'Syne', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
+        font-family: 'Syne', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif;
         font-weight: 800;
         font-size: 23.13px;
         fill: #FFFFFF;

@@ -1,4 +1,4 @@
-import { ArrowUpRight, CheckCircle2, FileText, Info, Lock, Mail, RefreshCw, Send, Shield, Trash2, UserX } from 'lucide-react';
+import { CheckCircle2, FileText, Info, Lock, Mail, RefreshCw, Send, Shield, Trash2, UserX } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 type RequestType = 'access' | 'correction' | 'withdrawal' | 'erasure' | 'grievance';
@@ -216,7 +216,7 @@ export function DataPrivacyPortal() {
                     Proceed with {currentOption.title} <Send size={16} aria-hidden="true" />
                   </button>
                   <a href="#privacy-policy" className="text-link">
-                    Read Privacy Policy <ArrowUpRight size={14} aria-hidden="true" />
+                    Read Privacy Policy
                   </a>
                 </div>
 

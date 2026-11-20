@@ -1,11 +1,11 @@
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { GentricksLogo } from './GentricksLogo';
 
 const navItems = [
   { label: 'Our Story', href: '#our-story' },
   { label: 'Ecosystem', href: '#ecosystem' },
-  { label: 'Programs', href: '#programs' },
+  { label: 'Events', href: '#events' },
   { label: 'Opportunities', href: '#opportunities' },
 ];
 
@@ -44,17 +44,33 @@ export function Header() {
             ))}
           </div>
           <a href="#join" className="nav-join mobile-nav-join" onClick={closeMenu}>
-            Join GENTRICKS <ArrowUpRight size={15} aria-hidden="true" />
+            Join GENTRICKS
           </a>
         </nav>
 
         <a href="#join" className="nav-join desktop-nav-join" onClick={closeMenu}>
-          Join GENTRICKS <ArrowUpRight size={15} aria-hidden="true" />
+          Join GENTRICKS
         </a>
 
         <button className="menu-toggle" type="button" aria-label={isOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={isOpen} aria-controls="main-navigation" onClick={() => setIsOpen((open) => !open)}>
           {isOpen ? <X size={22} aria-hidden="true" /> : <Menu size={22} aria-hidden="true" />}
         </button>
+      </div>
+
+      {/* Mobile menu panel - animated */}
+      <div className={`mobile-menu-panel ${isOpen ? 'is-open' : ''}`} aria-hidden={!isOpen}>
+        <div className="site-container mobile-menu-inner">
+          <div className="mobile-menu-links">
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href} onClick={closeMenu} aria-current={activeHash === item.href ? 'page' : undefined}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+          <a href="#join" className="nav-join mobile-nav-join" onClick={closeMenu}>
+            Join GENTRICKS
+          </a>
+        </div>
       </div>
     </header>
   );

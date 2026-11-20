@@ -1,4 +1,4 @@
-import { ArrowUpRight, CheckCircle2, FileText, Lock, Mail, Shield, UserCheck } from 'lucide-react';
+import { CheckCircle2, FileText, Lock, Mail, Shield, UserCheck } from 'lucide-react';
 
 export function PrivacyPolicy() {
   return (
@@ -25,7 +25,7 @@ export function PrivacyPolicy() {
           </p>
           <div className="legal-quick-links">
             <a href="#privacy-requests" className="button button-primary">
-              Manage Your Data & Rights <ArrowUpRight size={16} aria-hidden="true" />
+              Manage Your Data & Rights
             </a>
             <a href="mailto:support@gentricks.in" className="button button-ghost">
               <Mail size={16} aria-hidden="true" /> Contact Support Officer
@@ -38,7 +38,7 @@ export function PrivacyPolicy() {
             <h2>1. Who We Are (Data Fiduciary)</h2>
             <p>
               <strong>GENTRICKS</strong> operates as a technology, innovation, and community ecosystem for builders, creators,
-              and future leaders across Andhra Pradesh and India. Under the Digital Personal Data Protection Act, 2023,
+              and future leaders across India. Under the Digital Personal Data Protection Act, 2023,
               GENTRICKS acts as the <strong>Data Fiduciary</strong> regarding personal data collected via <code>gentricks.in</code>,
               affiliated forms, event registrations, and community channels.
             </p>

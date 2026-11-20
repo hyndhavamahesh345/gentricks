@@ -1,34 +1,12 @@
-import { ArrowUpRight, Building2, ChevronLeft, ChevronRight, Code2, Layers3, Lightbulb, PenTool, Rocket, Trophy, Users } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
-import { ecosystemData, ecosystemPeople } from '../data/ecosystem';
+import { Building2, Calendar, Clock, Code2, Layers3, Lightbulb, Mail, MapPin, Plus, Rocket, Trophy, Users } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { type EventRecord, ecosystemData, ecosystemPeople } from '../data/ecosystem';
+import { getEvents } from '../services/firebase';
 import { EcosystemVisual } from './EcosystemVisual';
 
-export type SectionPageName = 'ecosystem' | 'programs' | 'opportunities';
+export type SectionPageName = 'ecosystem' | 'events' | 'opportunities';
 
 const opportunityTypes = ['Internships', 'Collaborations', 'Hackathons'];
-
-const whoWeBringTogether = [
-  {
-    icon: Lightbulb,
-    title: 'STUDENTS & INNOVATORS',
-    description: 'Learn, participate in events, build projects, and discover opportunities.',
-  },
-  {
-    icon: Code2,
-    title: 'BUILDERS & DEVELOPERS',
-    description: 'Build with technology, join challenges, collaborate, and showcase your work.',
-  },
-  {
-    icon: Rocket,
-    title: 'FOUNDERS & ENTREPRENEURS',
-    description: 'Connect with talent, mentors, partners, and opportunities to grow.',
-  },
-  {
-    icon: PenTool,
-    title: 'CREATORS & EXPERTS',
-    description: 'Share knowledge, create experiences, and collaborate with the next generation.',
-  },
-];
 
 const whatWeDoOfferings = [
   {
@@ -58,7 +36,7 @@ function SectionLead({ eyebrow, title, copy }: { eyebrow: string; title: string;
 
 export function SectionPage({ page }: { page: SectionPageName }) {
   if (page === 'ecosystem') return <EcosystemPage />;
-  if (page === 'programs') return <ProgramsPage />;
+  if (page === 'events') return <EventsPage />;
   if (page === 'opportunities') return <OpportunitiesPage />;
   return <EcosystemPage />;
 }
@@ -67,91 +45,230 @@ function EcosystemPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeName, activeDescription] = ecosystemPeople[activeIndex];
 
-  return <><PageHero label="The GENTRICKS ecosystem" title="One Ecosystem. Many Paths." copy="There is no single way to participate. Find people, ideas, and directions that make sense for you." /><section className="ecosystem section-space"><div className="site-container ecosystem-layout"><div className="people-list">{ecosystemPeople.map(([name, description], index) => <button className={'person-row person-' + index + (index === activeIndex ? ' is-active' : '')} key={name} type="button" onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)} onClick={() => setActiveIndex(index)}><span className="person-number">0{index + 1}</span><span className="person-copy"><strong>{name}</strong><small>{description}</small></span><ArrowUpRight size={18} aria-hidden="true" /></button>)}</div><div className="ecosystem-feature"><EcosystemVisual kind={activeName} /><p className="ecosystem-feature-copy">{activeDescription}</p></div></div></section></>;
+  return <><PageHero label="The GENTRICKS ecosystem" title="One Ecosystem. Many Paths." copy="There is no single way to participate. Find people, ideas, and directions that make sense for you." /><section className="ecosystem section-space"><div className="site-container ecosystem-layout"><div className="people-list">{ecosystemPeople.map(([name, description], index) => <button className={'person-row person-' + index + (index === activeIndex ? ' is-active' : '')} key={name} type="button" onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)} onClick={() => setActiveIndex(index)}><span className="person-number">0{index + 1}</span><span className="person-copy"><strong>{name}</strong><small>{description}</small></span></button>)}</div><div className="ecosystem-feature"><EcosystemVisual kind={activeName} /><p className="ecosystem-feature-copy">{activeDescription}</p></div></div></section></>;
 }
 
-function ProgramsPage() {
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
-
-  const updateScrollState = () => {
-    const el = sliderRef.current;
-    if (!el) return;
-    setCanScrollLeft(el.scrollLeft > 10);
-    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 10);
-  };
+function EventsPage() {
+  const [eventsList, setEventsList] = useState<EventRecord[]>(ecosystemData.events);
+  const [filter, setFilter] = useState<'all' | 'hackathon' | 'workshop' | 'meetup'>('all');
 
   useEffect(() => {
-    const el = sliderRef.current;
-    if (!el) return;
-    updateScrollState();
-    el.addEventListener('scroll', updateScrollState, { passive: true });
-    window.addEventListener('resize', updateScrollState);
+    let isMounted = true;
+    getEvents().then((remoteEvents) => {
+      if (isMounted && remoteEvents && remoteEvents.length > 0) {
+        setEventsList(remoteEvents as EventRecord[]);
+      }
+    });
     return () => {
-      el.removeEventListener('scroll', updateScrollState);
-      window.removeEventListener('resize', updateScrollState);
+      isMounted = false;
     };
   }, []);
 
-  const handleScroll = (direction: 'left' | 'right') => {
-    const el = sliderRef.current;
-    if (!el) return;
-    const card = el.querySelector('.discovery-card') as HTMLElement | null;
-    const scrollAmount = card ? card.offsetWidth + 20 : 310;
-    el.scrollBy({
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth',
-    });
-  };
+  const filteredEvents = eventsList.filter((ev) => {
+    if (filter === 'all') return true;
+    return ev.category === filter;
+  });
 
   return (
     <div className="programs-view">
-      {/* 1. Who We Bring Together (Competitor-Style High Impact Carousel) */}
-      <section className="discovery-section" aria-labelledby="discovery-title">
+      <PageHero
+        label="Experiences & Events"
+        title="Where Ideas Meet Action in the Real World."
+        copy="From flagship hackathons and technical workshops to builder summits. Want to add or host your event here? Send your event details directly to collab@gentricks.in."
+      />
+
+      {/* 1. Live Events Section */}
+      <section className="events-live-section section-space" style={{ paddingTop: '50px' }}>
         <div className="site-container">
-          <div className="discovery-header">
-            <h1 id="discovery-title" className="discovery-title">
-              <span className="discovery-title-main">WHO WE</span>
-              <span className="discovery-title-accent theme-yellow">BRING TOGETHER.</span>
-            </h1>
-          </div>
-
-          <div className="discovery-carousel-wrapper">
-            <button
-              type="button"
-              className="discovery-nav-btn discovery-nav-left theme-yellow"
-              onClick={() => handleScroll('left')}
-              disabled={!canScrollLeft}
-              aria-label="Scroll left"
-            >
-              <ChevronLeft size={44} strokeWidth={2.4} aria-hidden="true" />
-            </button>
-
-            <div className="discovery-track theme-yellow" ref={sliderRef}>
-              {whoWeBringTogether.map((card, idx) => {
-                const Icon = card.icon;
-                return (
-                  <article key={idx} className="discovery-card theme-yellow">
-                    <div className="discovery-card-icon">
-                      <Icon size={38} strokeWidth={1.8} aria-hidden="true" />
-                    </div>
-                    <h2 className="discovery-card-title">{card.title}</h2>
-                    <p className="discovery-card-desc">{card.description}</p>
-                  </article>
-                );
-              })}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '32px' }}>
+            <div>
+              <p className="eyebrow"><span aria-hidden="true" /> Live & Upcoming</p>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3.2vw, 2.6rem)', margin: '6px 0 0', letterSpacing: '-0.03em' }}>
+                Explore <em>Events.</em>
+              </h2>
             </div>
 
-            <button
-              type="button"
-              className="discovery-nav-btn discovery-nav-right theme-yellow"
-              onClick={() => handleScroll('right')}
-              disabled={!canScrollRight}
-              aria-label="Scroll right"
+            {/* Actions: Filter Pills & Add Event Direct Email */}
+            <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                {(['all', 'hackathon', 'workshop', 'meetup'] as const).map((cat) => (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => setFilter(cat)}
+                    style={{
+                      padding: '8px 16px',
+                      fontFamily: 'var(--mono)',
+                      fontSize: '0.72rem',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                      background: filter === cat ? 'var(--yellow)' : 'rgba(255, 255, 255, 0.04)',
+                      color: filter === cat ? '#000' : 'var(--paper)',
+                      border: '1px solid ' + (filter === cat ? 'var(--yellow)' : 'var(--line)'),
+                      borderRadius: '4px',
+                      cursor: 'pointer',
+                      fontWeight: 700,
+                      transition: 'all 160ms ease',
+                    }}
+                  >
+                    {cat === 'all' ? 'All Events' : cat + 's'}
+                  </button>
+                ))}
+              </div>
+
+              <a
+                href="mailto:collab@gentricks.in?subject=Add%20an%20Event%20to%20GENTRICKS&body=Hi%20GENTRICKS%20Team%2C%0A%0AWe%20would%20like%20to%20add%20our%20event%20to%20the%20GENTRICKS%20Events%20board.%0A%0AEvent%20Title%3A%20%0AEvent%20Dates%20%26%20Time%3A%20%0AVenue%20%2F%20Format%20(In-person%20%2F%20Online%20%2F%20Hybrid)%3A%20%0ARegistration%20%2F%20Event%20Link%3A%20%0AOrganization%20%2F%20Community%3A%20%0ABrief%20Description%3A%20%0A%0AThank%20you!"
+                className="button button-primary"
+                style={{ padding: '8px 16px', fontSize: '0.72rem', gap: '6px' }}
+                title="Email collab@gentricks.in to add your event"
+              >
+                <Plus size={14} aria-hidden="true" /> Add Your Event
+              </a>
+            </div>
+          </div>
+
+          {/* Events Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '24px', marginBottom: '56px' }}>
+            {filteredEvents.map((event) => (
+              <article
+                key={event.id}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.02)',
+                  border: '1px solid var(--line)',
+                  borderRadius: '10px',
+                  padding: '28px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  transition: 'border-color 200ms ease, transform 200ms ease',
+                }}
+              >
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px', marginBottom: '16px' }}>
+                    <span
+                      style={{
+                        fontFamily: 'var(--mono)',
+                        fontSize: '0.68rem',
+                        padding: '4px 9px',
+                        background: 'var(--yellow)',
+                        color: '#000',
+                        fontWeight: 700,
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em',
+                        borderRadius: '3px',
+                      }}
+                    >
+                      {event.category || 'Event'} · {event.format}
+                    </span>
+                    {event.dates && (
+                      <span style={{ fontFamily: 'var(--mono)', fontSize: '0.8rem', color: 'var(--yellow)', fontWeight: 600 }}>
+                        {event.dates}
+                      </span>
+                    )}
+                  </div>
+
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 700, margin: '0 0 10px', color: 'var(--paper)' }}>
+                    {event.title}
+                  </h3>
+
+                  {event.description && (
+                    <p style={{ color: 'var(--muted)', fontSize: '0.92rem', lineHeight: 1.6, margin: '0 0 18px' }}>
+                      {event.description}
+                    </p>
+                  )}
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '9px', marginBottom: '22px', fontSize: '0.85rem', color: '#b0b0a8' }}>
+                    {event.venue && (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <MapPin size={15} style={{ color: 'var(--yellow)', flexShrink: 0 }} aria-hidden="true" />
+                        <span>{event.venue}</span>
+                      </div>
+                    )}
+                    {event.dates && (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <Calendar size={15} style={{ color: 'var(--yellow)', flexShrink: 0 }} aria-hidden="true" />
+                        <span>Dates: {event.dates}</span>
+                      </div>
+                    )}
+                    {event.round1Deadline && (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <Clock size={15} style={{ color: 'var(--yellow)', flexShrink: 0 }} aria-hidden="true" />
+                        <span>Round 1: {event.round1Deadline} {event.shortlistDate ? `· Shortlist: ${event.shortlistDate}` : ''}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div style={{ paddingTop: '18px', borderTop: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+                  <a
+                    href={event.link || '#join'}
+                    target={event.link ? '_blank' : undefined}
+                    rel={event.link ? 'noreferrer' : undefined}
+                    className="button button-primary"
+                    style={{ flex: 1, justifyContent: 'center' }}
+                  >
+                    Register Now
+                  </a>
+                  <a
+                    href="mailto:collab@gentricks.in?subject=Event%20Inquiry%20-%20"
+                    className="button button-ghost"
+                    style={{ padding: '0 14px' }}
+                    title="Inquire or Sponsor"
+                  >
+                    Inquire
+                  </a>
+                </div>
+              </article>
+            ))}
+
+            {/* Host with GENTRICKS Callout */}
+            <article
+              style={{
+                background: 'linear-gradient(145deg, rgba(255, 222, 0, 0.08), rgba(0, 0, 0, 0.4))',
+                border: '1px dashed rgba(255, 222, 0, 0.4)',
+                borderRadius: '10px',
+                padding: '28px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
             >
-              <ChevronRight size={44} strokeWidth={2.5} aria-hidden="true" />
-            </button>
+              <div>
+                <span
+                  style={{
+                    fontFamily: 'var(--mono)',
+                    fontSize: '0.68rem',
+                    padding: '4px 9px',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    color: 'var(--yellow)',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    borderRadius: '3px',
+                    display: 'inline-block',
+                    marginBottom: '16px',
+                  }}
+                >
+                  Add Your Event · Co-Host
+                </span>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 700, margin: '0 0 10px', color: 'var(--paper)' }}>
+                  Want to Add an Event Here?
+                </h3>
+                <p style={{ color: 'var(--muted)', fontSize: '0.92rem', lineHeight: 1.6, margin: '0 0 18px' }}>
+                  Are you hosting a hackathon, workshop, or tech meetup? Send your event details directly to our team at <strong>collab@gentricks.in</strong> to feature your event on GENTRICKS.
+                </p>
+              </div>
+
+              <div style={{ paddingTop: '18px', borderTop: '1px solid var(--line)' }}>
+                <a
+                  href="mailto:collab@gentricks.in?subject=Add%20an%20Event%20to%20GENTRICKS&body=Hi%20GENTRICKS%20Team%2C%0A%0AWe%20would%20like%20to%20add%20our%20event%20to%20the%20GENTRICKS%20Events%20board.%0A%0AEvent%20Title%3A%20%0AEvent%20Dates%20%26%20Time%3A%20%0AVenue%20%2F%20Format%20(In-person%20%2F%20Online%20%2F%20Hybrid)%3A%20%0ARegistration%20%2F%20Event%20Link%3A%20%0AOrganization%20%2F%20Community%3A%20%0ABrief%20Description%3A%20%0A%0AThank%20you!"
+                  className="button button-secondary"
+                  style={{ width: '100%', justifyContent: 'center', gap: '8px' }}
+                >
+                  <Mail size={15} aria-hidden="true" /> Email collab@gentricks.in
+                </a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -184,11 +301,11 @@ function ProgramsPage() {
           </div>
 
           <div className="what-we-do-actions">
-            <a href="#join" className="button button-primary">
-              Join GENTRICKS <ArrowUpRight size={17} aria-hidden="true" />
+            <a href="https://chat.whatsapp.com/F6F4Z2NukhG52S7xP9on9J" target="_blank" rel="noreferrer" className="button button-primary">
+              Join WhatsApp Community
             </a>
             <a href="mailto:collab@gentricks.in" className="button button-ghost">
-              Partner or Sponsor <ArrowUpRight size={17} aria-hidden="true" />
+              Partner or Sponsor
             </a>
           </div>
         </div>
@@ -234,7 +351,6 @@ function OpportunitiesPage() {
                       title="Register for AGENTIC X 2.0 Hackathon"
                     >
                       0{index + 1} / {type}
-                      <ArrowUpRight size={15} style={{ color: '#706200', flexShrink: 0 }} aria-hidden="true" />
                     </a>
                   );
                 }
@@ -265,7 +381,7 @@ function OpportunitiesPage() {
                       className="button button-dark"
                       style={{ minHeight: '38px', padding: '0 18px', fontSize: '0.85rem' }}
                     >
-                      Apply / Register <ArrowUpRight size={15} aria-hidden="true" />
+                      Apply / Register
                     </a>
                   </article>
                 ))}

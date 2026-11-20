@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { GentricksLogo } from './GentricksLogo';
 
 const socialLinks = [
@@ -30,7 +30,7 @@ export function Footer() {
           <div className="footer-col">
             <span className="footer-col-title">Platform</span>
             <a href="#ecosystem">Ecosystem</a>
-            <a href="#programs">Programs</a>
+            <a href="#events">Events</a>
             <a href="#opportunities">Opportunities</a>
           </div>
           <div className="footer-col">
@@ -44,7 +44,7 @@ export function Footer() {
 
         <div className="footer-actions">
           <a href="#join" className="text-link">
-            Join GENTRICKS <ArrowUpRight size={15} aria-hidden="true" />
+            Join GENTRICKS
           </a>
           <div className="footer-socials" aria-label="GENTRICKS social channels">
             {socialLinks.map((social) => (

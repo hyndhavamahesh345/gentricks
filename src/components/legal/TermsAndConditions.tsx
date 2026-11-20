@@ -1,4 +1,4 @@
-import { ArrowUpRight, CheckCircle2, ShieldAlert } from 'lucide-react';
+import { CheckCircle2, ShieldAlert } from 'lucide-react';
 
 export function TermsAndConditions() {
   return (
@@ -28,7 +28,7 @@ export function TermsAndConditions() {
             <h2>2. Purpose & Nature of GENTRICKS</h2>
             <p>
               GENTRICKS is a non-exclusive, innovation-driven platform established to connect students, builders, creators,
-              startups, and leaders across Andhra Pradesh and India. We provide learning resources, community forums,
+              startups, and leaders across India. We provide learning resources, community forums,
               hackathon showcases, and curated industry opportunities.
             </p>
           </section>
@@ -70,7 +70,7 @@ export function TermsAndConditions() {
             <p>
               These terms shall be governed by and construed in accordance with the laws of <strong>India</strong>. Any disputes
               arising out of or in connection with these terms shall be subject to the exclusive jurisdiction of the competent courts
-              in Andhra Pradesh, India.
+              in India.
             </p>
           </section>
 

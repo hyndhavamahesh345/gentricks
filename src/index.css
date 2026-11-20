@@ -64,6 +64,425 @@ button:focus-visible {
   background: var(--ink);
 }
 
+/* ==========================================================================
+   Scroll Reveal Animations
+   ========================================================================== */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes hero-gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%, 100% 50%, 50% 100%;
+  }
+  25% {
+    background-position: 50% 0%, 50% 100%, 100% 0%;
+  }
+  50% {
+    background-position: 100% 50%, 0% 50%, 50% 100%;
+  }
+  75% {
+    background-position: 50% 100%, 50% 0%, 0% 100%;
+  }
+}
+
+.reveal {
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+.reveal-fade-up {
+  animation-name: fade-in-up;
+  animation-duration: 700ms;
+}
+
+.reveal-fade {
+  animation-name: fade-in;
+  animation-duration: 600ms;
+}
+
+.reveal-slide-left {
+  animation-name: slide-in-left;
+  animation-duration: 700ms;
+}
+
+.reveal-slide-right {
+  animation-name: slide-in-right;
+  animation-duration: 700ms;
+}
+
+/* Stagger delays */
+.reveal-delay-1 { animation-delay: 100ms; }
+.reveal-delay-2 { animation-delay: 200ms; }
+.reveal-delay-3 { animation-delay: 300ms; }
+.reveal-delay-4 { animation-delay: 400ms; }
+.reveal-delay-5 { animation-delay: 500ms; }
+.reveal-delay-6 { animation-delay: 600ms; }
+
+/* When IntersectionObserver adds .is-visible to section, trigger inner reveal animations */
+section.is-visible .reveal,
+.section.is-visible .reveal,
+.hero.is-visible .reveal,
+.intro.is-visible .reveal,
+.our-story-section.is-visible .reveal,
+.faq-section.is-visible .reveal,
+.join-section.is-visible .reveal {
+  animation-play-state: running;
+}
+
+/* Default paused state for JS-controlled reveal */
+.reveal {
+  animation-play-state: paused;
+}
+
+/* Hero section - always visible immediately (above fold) */
+.hero .reveal {
+  animation-play-state: running;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Card Hover Effects
+   ========================================================================== */
+.interactive-card {
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  border-color: rgba(242, 214, 10, 0.5);
+}
+
+.interactive-card-light {
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.interactive-card-light:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(10, 10, 8, 0.18);
+  border-color: rgba(242, 214, 10, 0.45);
+}
+
+/* Button hover enhancement */
+.button-interactive {
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.button-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile menu animation */
+.mobile-menu-panel {
+  animation: slide-down 280ms ease-out;
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* FAQ accordion animation */
+.faq-answer {
+  overflow: hidden;
+  transition: max-height 300ms ease, opacity 220ms ease, padding 220ms ease;
+}
+
+.faq-answer.collapsed {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.faq-answer.expanded {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Ecosystem Flow Steps
+   ========================================================================== */
+.ecosystem-flow-wrapper {
+  margin-top: clamp(40px, 6vw, 72px);
+}
+
+.flow-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.flow-step {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 200ms ease;
+  border-radius: 999px;
+}
+
+.flow-step:hover,
+.flow-step.is-active {
+  border-color: var(--yellow);
+  background: rgba(242, 214, 10, 0.12);
+  color: var(--yellow);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(242, 214, 10, 0.15);
+}
+
+.flow-step-icon {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--muted);
+  transition: color 200ms ease;
+}
+
+.flow-step:hover .flow-step-icon,
+.flow-step.is-active .flow-step-icon {
+  color: var(--yellow);
+}
+
+.flow-step-connector {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .flow-step-connector {
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--line);
+    margin-left: -8px;
+    flex-shrink: 0;
+  }
+
+  .flow-step:last-child .flow-step-connector {
+    display: none;
+  }
+
+  .flow-step.is-active .flow-step-connector,
+  .flow-step:hover .flow-step-connector {
+    background: var(--yellow);
+  }
+}
+
+.flow-panels {
+  min-height: 120px;
+}
+
+.flow-panel {
+  text-align: center;
+  padding: 24px;
+}
+
+.flow-panel h3 {
+  margin: 0 0 12px;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--paper);
+}
+
+.flow-panel p {
+  max-width: 640px;
+  margin: 0 auto 24px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   FAQ Accordion Styles
+   ========================================================================== */
+.faq-section {
+  background: var(--ink-soft);
+  border-top: 1px solid var(--line);
+}
+
+.faq-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: clamp(36px, 5vw, 56px);
+}
+
+.faq-item {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 24px;
+  background: transparent;
+  border: none;
+  color: var(--paper);
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-align: left;
+  cursor: pointer;
+  transition: color 180ms ease;
+}
+
+.faq-question:hover {
+  color: var(--yellow);
+}
+
+.faq-icon {
+  display: flex;
+  flex-shrink: 0;
+  margin-left: 16px;
+  color: var(--yellow);
+  transition: transform 220ms ease;
+}
+
+.faq-icon.rotated {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 24px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.faq-answer p {
+  margin: 0 0 20px;
+}
+
+/* ==========================================================================
+   Mobile Menu Panel Styles
+   ========================================================================== */
+.mobile-menu-panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border-bottom: 1px solid var(--line);
+  background: rgba(10, 10, 8, 0.98);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-12px);
+  transition: opacity 280ms ease, visibility 280ms ease, transform 280ms ease;
+  z-index: 39;
+}
+
+.mobile-menu-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mobile-menu-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 20px 28px;
+}
+
+.mobile-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-menu-links a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  color: #c8c8be;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.mobile-menu-links a:hover {
+  color: var(--yellow);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.mobile-menu-links a[aria-current='page'] {
+  color: var(--yellow);
+}
+
 .site-container {
   width: min(100% - 48px, 1240px);
   margin-inline: auto;
@@ -238,8 +657,8 @@ h2 {
 
 .brand-logo {
   display: block;
-  width: 82px;
-  height: 44px;
+  width: 100px;
+  height: 54px;
 }
 
 .brand-name {
@@ -350,7 +769,10 @@ h2 {
   background:
     radial-gradient(circle at 86% 25%, rgba(242, 214, 10, 0.18), transparent 27%),
     radial-gradient(circle at 36% 90%, rgba(255, 255, 255, 0.055), transparent 25%),
+    linear-gradient(135deg, rgba(242, 214, 10, 0.06), transparent 40%, rgba(255, 255, 255, 0.03) 100%),
     var(--ink);
+  background-size: 100% 100%, 100% 100%, 200% 200%, 100% 100%;
+  animation: hero-gradient-shift 20s ease-in-out infinite;
 }
 
 .hero::after {
@@ -1603,7 +2025,7 @@ h2 {
 .footer-logo {
   display: block;
   width: auto;
-  height: 42px;
+  height: 52px;
 }
 
 .footer-lockup {
@@ -1617,8 +2039,8 @@ h2 {
 }
 
 .footer-lockup .footer-logo {
-  width: 82px;
-  height: 44px;
+  width: 100px;
+  height: 54px;
 }
 
 .footer-brand p {
@@ -1774,8 +2196,8 @@ h2 {
   }
 
   .brand-logo {
-    width: 72px;
-    height: 38px;
+    width: 88px;
+    height: 47px;
   }
 
   .menu-toggle {

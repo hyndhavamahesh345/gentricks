@@ -9,6 +9,8 @@ export interface EventRecord {
   title: string;
   startsAt: string;
   format: 'in-person' | 'online' | 'hybrid';
+  category?: 'hackathon' | 'workshop' | 'meetup' | 'conference';
+  status?: 'upcoming' | 'ongoing' | 'past';
   venue?: string;
   dates?: string;
   round1Deadline?: string;
@@ -16,6 +18,7 @@ export interface EventRecord {
   link?: string;
   description?: string;
   communityId?: string;
+  bannerImage?: string;
 }
 
 export interface OpportunityRecord {
@@ -41,6 +44,8 @@ export const ecosystemData: {
       title: 'AGENTIC X 2.0',
       startsAt: '2026-12-08',
       format: 'in-person',
+      category: 'hackathon',
+      status: 'upcoming',
       venue: 'Woxsen University',
       dates: '8–9 Dec',
       round1Deadline: '27 Nov',

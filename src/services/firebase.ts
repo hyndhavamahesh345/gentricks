@@ -34,7 +34,7 @@ export type CommunityMember = {
   email: string;
   phone?: string;
   city: string;
-  state: string;
+  state?: string;
   role: string;
   interests: string;
   consent: boolean;
@@ -133,4 +133,43 @@ export async function subscribeNewsletter(email: string): Promise<void> {
   }
 
   await new Promise((resolve) => setTimeout(resolve, 350));
+}
+
+/**
+ * Fetch events from Firestore 'events' collection
+ */
+export async function getEvents(): Promise<any[]> {
+  if (db) {
+    try {
+      const snap = await getDocs(collection(db, 'events'));
+      if (!snap.empty) {
+        return snap.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+      }
+    } catch (err) {
+      console.warn('Firestore events fetch error:', err);
+    }
+  }
+  return [];
+}
+
+/**
+ * Post a new event to Firestore 'events' collection
+ */
+export async function postEvent(eventData: Record<string, any>): Promise<string | null> {
+  if (db) {
+    try {
+      const ref = await addDoc(collection(db, 'events'), {
+        ...eventData,
+        createdAt: serverTimestamp(),
+      });
+      return ref.id;
+    } catch (err) {
+      console.error('Error posting event to Firestore:', err);
+      throw err;
+    }
+  }
+  return null;
 }

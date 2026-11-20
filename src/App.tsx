@@ -9,12 +9,12 @@ import { SectionPage, type SectionPageName } from './components/SectionPage';
 
 type AppRoute = SectionPageName | 'privacy-policy' | 'terms' | 'privacy-requests' | 'grievance';
 
-const sectionPages: SectionPageName[] = ['ecosystem', 'programs', 'opportunities'];
+const sectionPages: SectionPageName[] = ['ecosystem', 'events', 'opportunities'];
 const legalPages: AppRoute[] = ['privacy-policy', 'terms', 'privacy-requests', 'grievance'];
 
 function readPage(): AppRoute | null {
   const value = window.location.hash.replace('#', '').split('?')[0];
-  if (value === 'events') return 'opportunities';
+  if (value === 'programs') return 'events';
   if (sectionPages.includes(value as SectionPageName)) return value as SectionPageName;
   if (legalPages.includes(value as AppRoute)) return value as AppRoute;
   return null;

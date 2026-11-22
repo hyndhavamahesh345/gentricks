@@ -44,12 +44,12 @@ export function Header() {
             ))}
           </div>
           <a href="#join" className="nav-join mobile-nav-join" onClick={closeMenu}>
-            Join GENTRICKS
+            Join Community
           </a>
         </nav>
 
         <a href="#join" className="nav-join desktop-nav-join" onClick={closeMenu}>
-          Join GENTRICKS
+          Join Community
         </a>
 
         <button className="menu-toggle" type="button" aria-label={isOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={isOpen} aria-controls="main-navigation" onClick={() => setIsOpen((open) => !open)}>
@@ -68,7 +68,7 @@ export function Header() {
             ))}
           </div>
           <a href="#join" className="nav-join mobile-nav-join" onClick={closeMenu}>
-            Join GENTRICKS
+            Join Community
           </a>
         </div>
       </div>

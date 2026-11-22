@@ -1,16 +1,98 @@
-import { ChevronDown, Zap, Hammer, Users, Trophy, Rocket, Flag, PenTool, Lightbulb } from 'lucide-react';
+import { ChevronDown, Zap, Hammer, Users, Trophy, Rocket, Flag, PenTool, Lightbulb, Mail } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { submitCommunityMember } from '../services/firebase';
 
-const ecosystemSteps = [
-  { id: 'learn', label: 'LEARN', icon: Zap, description: 'Workshops, challenges, and hands-on technology experiences to build useful skills.' },
-  { id: 'build', label: 'BUILD', icon: Hammer, description: 'Turn ideas into shipped projects through hackathons and collaborative building.' },
-  { id: 'collaborate', label: 'COLLABORATE', icon: Users, description: 'Connect with builders, creators, and mentors across the ecosystem.' },
-  { id: 'showcase', label: 'SHOWCASE', icon: Trophy, description: 'Present your work, get feedback, and gain visibility in the community.' },
-  { id: 'opportunities', label: 'GET OPPORTUNITIES', icon: Rocket, description: 'Access internships, careers, and startup opportunities from partners.' },
-  { id: 'launch', label: 'LAUNCH', icon: Flag, description: 'Take your projects from prototype to product with ecosystem support.' },
-  { id: 'lead', label: 'LEAD', icon: Users, description: 'Build communities, mentor others, and shape the next generation.' },
-] as const;
+interface EcosystemStep {
+  id: string;
+  label: string;
+  tag: string;
+  icon: typeof Zap;
+  title: string;
+  description: string;
+  actionLabel: string;
+  actionHref: string;
+  isEmail?: boolean;
+  contactNote?: string;
+}
+
+const ecosystemSteps: EcosystemStep[] = [
+  {
+    id: 'learn',
+    label: 'LEARN',
+    tag: 'Skill Sprints',
+    icon: Zap,
+    title: 'Master Emerging Tech By Doing',
+    description: 'Hands-on learning sprints, masterclasses, and builder sessions covering AI agents, system architecture, and production engineering.',
+    actionLabel: 'Join Learning Sprints',
+    actionHref: '#join',
+  },
+  {
+    id: 'build',
+    label: 'BUILD',
+    tag: 'Hackathons & Sprints',
+    icon: Hammer,
+    title: 'Turn Ideas Into Working Software',
+    description: 'Participate in weekend build challenges and flagship hackathons like AGENTIC X 2.0. Ship functional prototypes with real technical depth.',
+    actionLabel: 'Explore Hackathons & Events',
+    actionHref: '#events',
+  },
+  {
+    id: 'collaborate',
+    label: 'COLLABORATE',
+    tag: 'Community & Squads',
+    icon: Users,
+    title: 'Find Your Co-Builders & Team',
+    description: 'Connect with fellow developers, UI designers, and creators across Andhra Pradesh and India. Form squads for hackathons and open-source builds.',
+    actionLabel: 'Join WhatsApp Community',
+    actionHref: 'https://chat.whatsapp.com/F6F4Z2NukhG52S7xP9on9J',
+  },
+  {
+    id: 'showcase',
+    label: 'SHOWCASE',
+    tag: 'Project Showcase',
+    icon: Trophy,
+    title: 'Share Your Project With The Community',
+    description: 'Built something exciting? Showcase your project or demo to the community, receive feedback from experienced engineers, and build proof of work.',
+    actionLabel: 'Share Your Project',
+    actionHref: 'mailto:collab@gentricks.in?subject=Project%20Showcase%20Submission&body=Hi%20GENTRICKS%20Team%2C%0A%0AI%20would%20like%20to%20showcase%20my%20project%20at%20GENTRICKS.%0A%0AProject%20Name%3A%0ADemo%20%2F%20Repo%20Link%3A%0ABrief%20Summary%3A%0ABuilders%20%2F%20Team%3A%0A%0AThank%20you!',
+    isEmail: true,
+    contactNote: 'Have a project to demo? Send details to',
+  },
+  {
+    id: 'opportunities',
+    label: 'OPPORTUNITIES',
+    tag: 'Careers & Roles',
+    icon: Rocket,
+    title: 'Access Real Industry Opportunities',
+    description: 'Get discovered for software engineering internships, startup roles, freelance gigs, and project bounties directly through GENTRICKS network partners.',
+    actionLabel: 'View Open Opportunities',
+    actionHref: '#opportunities',
+  },
+  {
+    id: 'launch',
+    label: 'LAUNCH',
+    tag: 'Prototypes to Products',
+    icon: Flag,
+    title: 'Launch With Us & Scale',
+    description: 'Ready to turn your prototype into an early startup or product? Get mentorship on system architecture, user testing, and early distribution.',
+    actionLabel: 'Launch With Us',
+    actionHref: 'mailto:collab@gentricks.in?subject=Startup%20Launch%20Inquiry&body=Hi%20GENTRICKS%20Team%2C%0A%0AWe%20are%20building%20a%20product%2Fstartup%20and%20looking%20for%20ecosystem%20support%20and%20mentorship.%0A%0AProduct%20Name%3A%0AStage%20(Prototype%20%2F%20MVP%20%2F%20Live)%3A%0AWhat%20we%20need%20help%20with%3A%0A%0AThank%20you!',
+    isEmail: true,
+    contactNote: 'Building an early product or startup? Connect with our team at',
+  },
+  {
+    id: 'lead',
+    label: 'LEAD',
+    tag: 'Campus Leadership',
+    icon: Users,
+    title: 'Build the Ecosystem In Your Campus',
+    description: 'Start a GENTRICKS chapter at your college, organize local developer meetups, mentor junior builders, and foster grassroots innovation.',
+    actionLabel: 'Lead a Campus Chapter',
+    actionHref: 'mailto:collab@gentricks.in?subject=Campus%20Chapter%20Lead%20Application&body=Hi%20GENTRICKS%20Team%2C%0A%0AI%20am%20interested%20in%20leading%20a%20GENTRICKS%20campus%20chapter%20or%20organizing%20local%20meetups.%0A%0AName%3A%0ACollege%20%2F%20City%3A%0AYear%20%26%20Branch%3A%0AWhy%20I%20want%20to%20lead%3A%0A%0AThank%20you!',
+    isEmail: true,
+    contactNote: 'Want to lead a campus chapter or host meetups? Inquire at',
+  },
+];
 
 const profileCards = [
   {
@@ -38,7 +120,7 @@ const profileCards = [
     what: 'Learn, practice, join hackathons, and build a portfolio that matters.',
     get: 'Workshops, challenges, projects, campus chapters, and access to internships and careers.',
     cta: 'Start Learning',
-    flow: ['LEARN', 'BUILD', 'GET OPPORTUNITIES', 'LEAD'],
+    flow: ['LEARN', 'BUILD', 'OPPORTUNITIES', 'LEAD'],
   },
   {
     name: 'Entrepreneurs',
@@ -47,7 +129,7 @@ const profileCards = [
     what: 'Launch your ideas, find your team, and get opportunities to grow.',
     get: 'Connect with talent, mentors, partners, and startup ecosystem support.',
     cta: 'Start Launching',
-    flow: ['GET OPPORTUNITIES', 'LAUNCH', 'LEAD', 'COLLABORATE'],
+    flow: ['OPPORTUNITIES', 'LAUNCH', 'LEAD', 'COLLABORATE'],
   },
 ] as const;
 
@@ -245,9 +327,9 @@ export function Homepage() {
       <section id="ecosystem-flow" className="section-space" aria-labelledby="flow-title" ref={setSectionRef(3)}>
         <div className="site-container">
           <div className="section-lead reveal reveal-fade-up">
-            <p className="eyebrow"><span aria-hidden="true" /> 03 / ECOSYSTEM FLOW</p>
-            <h2 id="flow-title">How You Move <em>Through GENTRICKS.</em></h2>
-            <p className="section-copy">Seven steps. One continuous journey. Click any step to explore.</p>
+            <p className="eyebrow"><span aria-hidden="true" /> 03 / COMMUNITY PATHWAYS</p>
+            <h2 id="flow-title">How Builders Grow With <em>GENTRICKS.</em></h2>
+            <p className="section-copy">A clear progression from learning modern tools to shipping projects, finding teammates, and accessing opportunities.</p>
           </div>
 
           <div className="ecosystem-flow-wrapper reveal reveal-fade-up reveal-delay-1">
@@ -264,19 +346,56 @@ export function Homepage() {
                   onMouseEnter={() => setActiveStep(index)}
                 >
                   <span className="flow-step-icon">
-                    <step.icon size={20} strokeWidth={2} aria-hidden="true" />
+                    <step.icon size={18} strokeWidth={2} aria-hidden="true" />
                   </span>
                   <span className="flow-step-label">{step.label}</span>
-                  {index < ecosystemSteps.length - 1 && <span className="flow-step-connector" aria-hidden="true" />}
                 </button>
               ))}
             </div>
 
             <div className="flow-panels" role="tabpanel" aria-labelledby={`flow-tab-${ecosystemSteps[activeStep].id}`}>
               <div id={`flow-panel-${ecosystemSteps[activeStep].id}`} className="flow-panel reveal reveal-fade-up">
-                <h3>{ecosystemSteps[activeStep].label}</h3>
-                <p>{ecosystemSteps[activeStep].description}</p>
-                <a href="#join" className="button button-primary button-interactive">Start Your Journey</a>
+                <span style={{
+                  fontFamily: 'var(--mono)',
+                  fontSize: '0.72rem',
+                  color: 'var(--yellow)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  fontWeight: 600,
+                  display: 'inline-block',
+                  marginBottom: '10px'
+                }}>
+                  {ecosystemSteps[activeStep].tag}
+                </span>
+                <h3 style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', marginBottom: '12px', color: 'var(--paper)' }}>
+                  {ecosystemSteps[activeStep].title}
+                </h3>
+                <p style={{ maxWidth: '680px', margin: '0 auto 24px', color: 'var(--muted)', fontSize: '0.98rem', lineHeight: 1.65 }}>
+                  {ecosystemSteps[activeStep].description}
+                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px' }}>
+                  <a
+                    href={ecosystemSteps[activeStep].actionHref}
+                    target={ecosystemSteps[activeStep].actionHref.startsWith('http') ? '_blank' : undefined}
+                    rel={ecosystemSteps[activeStep].actionHref.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="button button-primary button-interactive"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                  >
+                    {ecosystemSteps[activeStep].isEmail && <Mail size={16} aria-hidden="true" />}
+                    <span>{ecosystemSteps[activeStep].actionLabel}</span>
+                  </a>
+                  {ecosystemSteps[activeStep].contactNote && (
+                    <p style={{ margin: 0, fontSize: '0.88rem', color: 'var(--muted)', textAlign: 'center' }}>
+                      {ecosystemSteps[activeStep].contactNote}{' '}
+                      <a
+                        href="mailto:collab@gentricks.in"
+                        style={{ color: 'var(--yellow)', textDecoration: 'underline', fontWeight: 600 }}
+                      >
+                        collab@gentricks.in
+                      </a>
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>

@@ -309,29 +309,6 @@ section.is-visible .reveal,
   color: var(--yellow);
 }
 
-.flow-step-connector {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .flow-step-connector {
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: var(--line);
-    margin-left: -8px;
-    flex-shrink: 0;
-  }
-
-  .flow-step:last-child .flow-step-connector {
-    display: none;
-  }
-
-  .flow-step.is-active .flow-step-connector,
-  .flow-step:hover .flow-step-connector {
-    background: var(--yellow);
-  }
-}
 
 .flow-panels {
   min-height: 120px;

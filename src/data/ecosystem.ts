@@ -51,7 +51,7 @@ export const ecosystemData: {
       round1Deadline: '27 Nov',
       shortlistDate: '28 Nov',
       link: 'https://fts.aircwou.in/hackathon',
-      description: 'Next-generation AI and builder experience bringing developers, creators, and future founders together.',
+      description: '48-hour builder hackathon on autonomous agents, full-stack systems, and product prototypes at Woxsen University.',
     },
   ],
   opportunities: [
@@ -68,26 +68,26 @@ export const ecosystemData: {
 };
 
 export const ecosystemPeople = [
-  ['Builders', 'Turn curiosity into things that work.'],
-  ['Creators', 'Shape stories people want to share.'],
-  ['Students', 'Find practical ways to grow.'],
-  ['Entrepreneurs', 'Move ideas toward momentum.'],
+  ['Builders', 'Write code, ship working prototypes, and run live system tests.'],
+  ['Creators', 'Design product interfaces, craft demos, and document technical breakdowns.'],
+  ['Students', 'Learn modern stacks, compete in hackathons, and build a verified portfolio.'],
+  ['Entrepreneurs', 'Turn hackathon projects into production tools and find early users.'],
 ] as const;
 
 export const programAreas = [
-  ['AI & Emerging Technology', 'Explore the ideas changing how we build.'],
-  ['Workshops & Learning', 'Build useful skills through practical learning.'],
-  ['Hackathons & Innovation', 'Meet challenges with ideas, teams, and action.'],
-  ['Events & Experiences', 'Make room for conversations that move things forward.'],
-  ['Career & Opportunities', 'Find ways to contribute and grow.'],
-  ['Startup & Founder Ecosystem', 'Connect early ideas with an ecosystem around them.'],
+  ['AI Systems & Engineering', 'Hands-on sprints on autonomous agents, model APIs, and production deployments.'],
+  ['Workshops & Sprints', 'Code-along sessions led by developers actively building and shipping software.'],
+  ['Hackathons & Bounties', 'Weekend sprint challenges with real technical judging and cash prize pools.'],
+  ['Meetups & Demo Days', 'In-person project showcases, lightning talks, and developer networking.'],
+  ['Internships & Roles', 'Direct referrals to partner startups and engineering teams hiring student talent.'],
+  ['Startup Launchpad', 'Architecture reviews, early adopter distribution, and founder mentorship.'],
 ] as const;
 
 export const participationPaths = [
-  ['Build', 'For developers and makers.'],
-  ['Create', 'For creators and storytellers.'],
-  ['Learn', 'For students and curious minds.'],
-  ['Lead', 'For community builders and future leaders.'],
-  ['Start', 'For entrepreneurs and founders.'],
-  ['Connect', 'For professionals and organizations.'],
+  ['Build', 'Full-stack developers, AI engineers, and system architects.'],
+  ['Create', 'UI/UX designers, technical writers, and product demo makers.'],
+  ['Learn', 'College students mastering modern engineering workflows.'],
+  ['Lead', 'Campus chapter leads and local developer meetup organizers.'],
+  ['Launch', 'Founders taking prototypes to early customer trials.'],
+  ['Partner', 'Tech companies, mentors, and hiring engineering teams.'],
 ] as const;

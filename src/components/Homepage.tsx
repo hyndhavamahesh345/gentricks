@@ -42,7 +42,7 @@ const ecosystemSteps: EcosystemStep[] = [
     tag: 'Community & Squads',
     icon: Users,
     title: 'Find Your Co-Builders & Team',
-    description: 'Connect with fellow developers, UI designers, and creators across Andhra Pradesh and India. Form squads for hackathons and open-source builds.',
+    description: 'Connect with fellow developers, UI designers, and creators across Andhra Pradesh, Telangana, and India. Form squads for hackathons and open-source builds.',
     actionLabel: 'Join WhatsApp Community',
     actionHref: 'https://chat.whatsapp.com/F6F4Z2NukhG52S7xP9on9J',
   },
@@ -98,36 +98,36 @@ const profileCards = [
   {
     name: 'Builders',
     icon: Hammer,
-    who: 'Developers and makers who turn curiosity into things that work.',
-    what: 'Build real products, ship projects, and get feedback from the community.',
-    get: 'Access to hackathons, collaborative projects, real-world challenges, and hands-on experiences.',
+    who: 'Engineers building web apps, AI systems, and open-source tools.',
+    what: 'Ship functional software, join weekend hackathons, and review code with peers.',
+    get: 'Flagship hackathon entry, squad matching, and direct feedback from senior developers.',
     cta: 'Start Building',
     flow: ['LEARN', 'BUILD', 'COLLABORATE', 'SHOWCASE'],
   },
   {
     name: 'Creators',
     icon: PenTool,
-    who: 'Content creators, designers, and storytellers.',
-    what: 'Create content, share your work, and grow your audience within the ecosystem.',
-    get: 'Creator initiatives, collaborative projects, and a platform to showcase your voice.',
+    who: 'Product designers, UI/UX specialists, and technical storytellers.',
+    what: 'Design production interfaces, publish interactive case studies, and demo creative tech.',
+    get: 'Design sprint challenges, product showcase features, and co-builder squads.',
     cta: 'Start Creating',
     flow: ['LEARN', 'CREATE', 'COLLABORATE', 'SHOWCASE'],
   },
   {
     name: 'Students',
     icon: Lightbulb,
-    who: 'Students and curious minds looking for practical ways to grow.',
-    what: 'Learn, practice, join hackathons, and build a portfolio that matters.',
-    get: 'Workshops, challenges, projects, campus chapters, and access to internships and careers.',
+    who: 'College students and early programmers looking to build real-world proof of work.',
+    what: 'Master production stacks, compete in inter-college hackathons, and publish live repos.',
+    get: 'Skill sprints, campus chapter leadership, and direct recommendations to partner companies.',
     cta: 'Start Learning',
     flow: ['LEARN', 'BUILD', 'OPPORTUNITIES', 'LEAD'],
   },
   {
     name: 'Entrepreneurs',
     icon: Rocket,
-    who: 'Founders and aspiring entrepreneurs moving ideas toward momentum.',
-    what: 'Launch your ideas, find your team, and get opportunities to grow.',
-    get: 'Connect with talent, mentors, partners, and startup ecosystem support.',
+    who: 'Early-stage founders turning hackathon prototypes into active products.',
+    what: 'Validate system architecture, recruit student engineering talent, and run early user trials.',
+    get: 'Technical mentor office hours, prototype demo days, and early launch support.',
     cta: 'Start Launching',
     flow: ['OPPORTUNITIES', 'LAUNCH', 'LEAD', 'COLLABORATE'],
   },
@@ -136,19 +136,19 @@ const profileCards = [
 const faqItems = [
   {
     question: 'What is GENTRICKS?',
-    answer: 'GENTRICKS is a technology-driven ecosystem for builders, creators, students, and entrepreneurs. We bring people, technology, and ideas into the same conversation so the next generation can learn, make, collaborate, and lead with intent.',
+    answer: 'GENTRICKS is a technology ecosystem and launchpad across Andhra Pradesh, Telangana, and India. We bring together developers, designers, students, and early founders to build AI agents, compete in hackathons, and ship production software.',
   },
   {
     question: 'Who can join GENTRICKS?',
-    answer: 'Anyone building with technology—developers, designers, creators, students, and aspiring founders. There are pathways for Builders, Creators, Students, and Entrepreneurs.',
+    answer: 'Anyone actively building or learning modern tech—software developers, UI/UX designers, college students, and technical founders across India.',
   },
   {
     question: 'How do I participate in the ecosystem?',
-    answer: 'Start by joining the community. Then explore pathways: Learn through workshops, Build at hackathons, Collaborate with peers, Showcase your work, Get Opportunities, Launch projects, and Lead communities.',
+    answer: 'Join our WhatsApp community first. From there, join upcoming learning sprints, compete in weekend hackathons like AGENTIC X 2.0, demo your builds, or apply to lead a campus chapter.',
   },
   {
     question: 'What programs does GENTRICKS offer?',
-    answer: 'We provide Learning & Innovation (workshops, challenges, projects), Campus & Community (chapters, student communities, institutional collaborations), and Opportunities (internships, careers, competitions, mentorship, networking).',
+    answer: 'We organize technical hackathons, hands-on engineering workshops, campus developer chapters, and connect builders to internship and hiring opportunities.',
   },
   {
     question: 'Are there costs to join or participate?',
@@ -160,7 +160,7 @@ const faqItems = [
   },
   {
     question: 'Where is GENTRICKS based?',
-    answer: 'Built to grow with people across India.',
+    answer: 'Active across Andhra Pradesh, Telangana, and expanding to builder chapters across India.',
   },
   {
     question: 'How can I partner or sponsor?',
@@ -284,7 +284,7 @@ export function Homepage() {
       <section className="intro section-space" aria-labelledby="intro-title" ref={setSectionRef(1)}>
         <div className="site-container intro-grid">
           <p className="intro-marker reveal reveal-fade-up">01 <span>INTRODUCTION</span></p>
-          <div><h2 id="intro-title" className="reveal reveal-fade-up reveal-delay-1">A place to move from potential to <em>possibility.</em></h2></div>
+          <div><h2 id="intro-title" className="reveal reveal-fade-up reveal-delay-1">A place to move from potential to reality.</h2></div>
           <p className="intro-copy reveal reveal-fade-up reveal-delay-2">GENTRICKS brings people, technology, and ideas into the same conversation—so the next generation can learn, make, collaborate, and lead with intent.</p>
         </div>
       </section>
@@ -297,7 +297,7 @@ export function Homepage() {
               <p className="eyebrow"><span aria-hidden="true" /> 02 / OUR STORY</p>
               <h2 id="story-title">
                 Born From Grassroots Ambition. <br />
-                <em>Built For The Next Generation.</em>
+                Built For The Next Generation.
               </h2>
               <p className="story-intro-text">
                 <strong>GENTRICKS</strong> started with a simple, stubborn observation: raw talent, curious minds, and ambitious builders are everywhere — but the opportunities, communities, and infrastructure to turn that potential into real-world impact are not.
@@ -407,7 +407,7 @@ export function Homepage() {
         <div className="site-container">
           <div className="section-lead reveal reveal-fade-up">
             <p className="eyebrow"><span aria-hidden="true" /> FAQ</p>
-            <h2 id="faq-title">Questions <em>Answered.</em></h2>
+            <h2 id="faq-title">Questions Answered</h2>
           </div>
 
           <div className="faq-grid reveal reveal-fade-up reveal-delay-1">
@@ -442,7 +442,7 @@ export function Homepage() {
         <div className="site-container join-card">
           <div className="join-card-copy reveal reveal-slide-left">
             <p className="eyebrow eyebrow-dark"><span aria-hidden="true" /> The next generation is already in motion</p>
-            <h2 id="join-title">Bring your curiosity. <br />Bring your <em>next idea.</em></h2>
+            <h2 id="join-title">Bring your curiosity. <br />Bring your next project.</h2>
             <div style={{ marginTop: '24px' }}>
               <p style={{ fontSize: '0.88rem', color: '#3a3a34', margin: '0 0 10px', fontWeight: 500 }}>
                 Want to connect with builders right away?

@@ -45,7 +45,7 @@ function EcosystemPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [activeName, activeDescription] = ecosystemPeople[activeIndex];
 
-  return <><PageHero label="The GENTRICKS ecosystem" title="One Ecosystem. Many Paths." copy="There is no single way to participate. Find people, ideas, and directions that make sense for you." /><section className="ecosystem section-space"><div className="site-container ecosystem-layout"><div className="people-list">{ecosystemPeople.map(([name, description], index) => <button className={'person-row person-' + index + (index === activeIndex ? ' is-active' : '')} key={name} type="button" onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)} onClick={() => setActiveIndex(index)}><span className="person-number">0{index + 1}</span><span className="person-copy"><strong>{name}</strong><small>{description}</small></span></button>)}</div><div className="ecosystem-feature"><EcosystemVisual kind={activeName} /><p className="ecosystem-feature-copy">{activeDescription}</p></div></div></section></>;
+  return <><PageHero label="Developer Pathways" title="Choose Your Track" copy="Whether you write code, design interfaces, or build early startups, find your place in the ecosystem." /><section className="ecosystem section-space"><div className="site-container ecosystem-layout"><div className="people-list">{ecosystemPeople.map(([name, description], index) => <button className={'person-row person-' + index + (index === activeIndex ? ' is-active' : '')} key={name} type="button" onMouseEnter={() => setActiveIndex(index)} onFocus={() => setActiveIndex(index)} onClick={() => setActiveIndex(index)}><span className="person-number">0{index + 1}</span><span className="person-copy"><strong>{name}</strong><small>{description}</small></span></button>)}</div><div className="ecosystem-feature"><EcosystemVisual kind={activeName} /><p className="ecosystem-feature-copy">{activeDescription}</p></div></div></section></>;
 }
 
 function EventsPage() {
@@ -72,9 +72,9 @@ function EventsPage() {
   return (
     <div className="programs-view">
       <PageHero
-        label="Experiences & Events"
-        title="Where Ideas Meet Action in the Real World."
-        copy="From flagship hackathons and technical workshops to builder summits. Want to add or host your event here? Send your event details directly to collab@gentricks.in."
+        label="Hackathons & Sprints"
+        title="Build, Ship, and Compete"
+        copy="Flagship hackathons, live code sprints, and builder meetups across Andhra Pradesh, Telangana, and India. Hosting an event? Send details to collab@gentricks.in."
       />
 
       {/* 1. Live Events Section */}
@@ -84,7 +84,7 @@ function EventsPage() {
             <div>
               <p className="eyebrow"><span aria-hidden="true" /> Live & Upcoming</p>
               <h2 style={{ fontSize: 'clamp(1.75rem, 3.2vw, 2.6rem)', margin: '6px 0 0', letterSpacing: '-0.03em' }}>
-                Explore <em>Events.</em>
+                Explore Events
               </h2>
             </div>
 
@@ -278,9 +278,9 @@ function EventsPage() {
         <div className="site-container">
           <div className="section-lead">
             <p className="eyebrow"><span aria-hidden="true" /> What GENTRICKS Provides</p>
-            <h2 id="what-we-do-title">What We <em>Do.</em></h2>
+            <h2 id="what-we-do-title">What We Do</h2>
             <p className="section-copy">
-              Focused experiences, infrastructure, and access at the intersection of technology, community, and momentum.
+              Hands-on technical hackathons, campus developer chapters, and direct paths to startup engineering roles.
             </p>
           </div>
 
@@ -319,9 +319,9 @@ function OpportunitiesPage() {
   return (
     <>
       <PageHero
-        label="Opportunities"
-        title="Find internships, hackathons, and collaborations to build with."
-        copy="This space is designed to connect people with ways to contribute, learn, collaborate, and move forward."
+        label="Engineering Careers & Bounties"
+        title="Verified Roles & Hackathons"
+        copy="Access software engineering internships, technical hackathons, and developer bounties backed by partner companies."
       />
       <section className="opportunities section-space">
         <div className="site-container opportunities-layout">
